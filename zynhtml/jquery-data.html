@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Data</title>
+    <style>
+        div{
+            color:green;
+
+        }
+        span{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        hi I am name is 
+        <span class="span1"></span>
+        and age 
+        <span class="span2"></span>
+    </div>
+    <div class="div1" data-role="page" data-last-value="10" data-hidden="true"></div>
+
+    <script src="jquery-3.2.0.min.js"></script>
+    <script>
+        var div = $('div')[0]//DOM对象
+        $.data(div,'message',{user:'zyn',age:19});//把属性名为message的属性user,age存在Div内
+        $('.span1').text($.data(div,'message').user)//获取div内的属性值放入span内
+        $('.span2').text($.data(div,'message').age)
+        console.log($('.div1').data("role"))
+        console.log($('.div1').data("lastValue"))
+        console.log($('.div1').data("hidden"))
+    </script>
+</body>
+</html>

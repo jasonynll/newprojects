@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script>
+window.onload =function()
+{
+	var oBtn1 = document.getElementById('btn1')
+	var oBtn2 = document.getElementById('btn2')
+	var oBtn3 = document.getElementById('btn3')
+	var oDiv1 = document.getElementById('div1')
+	var aFx = oDiv1.getElementsByTagName('input')
+	
+	
+	
+		
+	oBtn1.onclick = function(){
+	 	for(var i=0;i<aFx.length; i++){	
+			aFx[i].checked = true
+		}
+	}
+	oBtn2.onclick = function(){
+	 	for(var i=0;i<aFx.length; i++){	
+			aFx[i].checked = false
+		}
+	}
+	oBtn3.onclick = function(){
+	 	for(var i=0;i<aFx.length; i++){	
+		  	if(aFx[i].checked==true){
+				aFx[i].checked = false
+			}else{
+				aFx[i].checked = true
+			}
+		}
+	}
+}
+</script>
+</head>
+
+<body>
+<input id="btn1" type="button" value="全选" /><br/>
+<input id="btn2" type="button" value="不选" /><br/>
+<input id="btn3" type="button" value="反选" /><br/>
+<div id="div1">
+	<input type="checkbox" /><br/>
+    <input type="checkbox" /><br/>
+    <input type="checkbox" /><br/>
+    <input type="checkbox" /><br/>
+    <input type="checkbox" /><br/>
+    <input type="checkbox" /><br/>
+    <input type="checkbox" /><br/>
+    <input type="checkbox" /><br/>
+</div>
+</body>
+</html>

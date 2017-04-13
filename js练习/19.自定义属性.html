@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+li{width:114px;height:140px;margin-right:20px;float:left;background:url(../jsimg/normal.png); list-style:none;}
+</style>
+<script>
+window.onload = function(){
+	var aLi = document.getElementsByTagName('li');
+	
+	for(var i=0;i<aLi.length;i++){
+		aLi[i].onOff = true;
+		aLi[i].onclick = function(){
+			if(this.onOff){
+				this.style.background = 'url(../jsimg/active.png)';
+				this.onOff = false;
+			}else{
+				this.style.background = 'url(../jsimg/normal.png)';
+				this.onOff =true;
+			};
+		};
+	};
+};
+</script>
+</head>
+
+<body>
+<ul>
+	<li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>

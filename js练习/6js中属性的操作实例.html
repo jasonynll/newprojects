@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+#div{height:200px;width:200px;border:1px solid #000; overflow:auto;}
+</style>
+<script>
+window.onload = function (){
+	var oDiv  = document.getElementById('div')
+	var oSpan = document.getElementById('span1')
+	var oInput= document.getElementById('input')
+	var oBtn  = document.getElementById('btn')
+	
+	oBtn.onclick = function (){
+		if(oInput.value ==''){
+			alert('请输入')
+		}else{
+				oDiv.innerHTML += oSpan.innerHTML+oInput.value+'<br/>';
+				oInput.value ='';
+		}
+	}
+}
+</script>
+</head>
+
+<body>
+<div id="div"></div>
+<span id="span1">妙味：</span>
+<input id="input" type="text" />
+<input id="btn" type="button" value="按钮" />
+</body>
+</html>

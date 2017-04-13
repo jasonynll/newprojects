@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+						
+
+
+
+<style>
+  #stage
+  {
+  	perspective:800px;
+  	width:400px;
+  	margin: 200px auto;
+  }
+  #wrap
+  {
+  	transform-style: preserve-3d;
+  	position: relative;
+  }
+  #wrap img
+  {
+  	position: absolute;
+  	top:0;
+  	left:0;
+  	width:200px;
+  	height: 100px;
+  }
+  #wrap img:nth-child(1)
+  {
+  	transform: rotateY(0deg) translateZ(193px);
+  }
+  #wrap img:nth-child(2)
+  {
+  	transform: rotateY(60deg) translateZ(193px);
+  }
+  #wrap img:nth-child(3)
+  {
+  	transform: rotateY(120deg) translateZ(193px);
+  }
+  #wrap img:nth-child(4)
+  {
+  	transform: rotateY(180deg) translateZ(193px);
+  }
+  #wrap img:nth-child(5)
+  {
+  	transform: rotateY(240deg) translateZ(193px);
+  }
+  #wrap img:nth-child(6)
+  {
+  	transform: rotateY(360deg) translateZ(193px);
+  }
+
+</style>
+</head>
+<body>
+    <div id="stage">
+    	<div id="wrap">
+    		<img src="./image/rotate-1.png" alt="">
+    		<img src="./image/rotate-2.png" alt="">
+    		<img src="./image/rotate-3.png" alt="">
+    		<img src="./image/rotate-4.png" alt="">
+    		<img src="./image/rotate-5.png" alt="">
+    		<img src="./image/rotate-6.png" alt="">
+    		
+    	</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>transform</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+
+ /*Mozilla内核浏览器：firefox3.5+
+  -moz-transform-origin: x y;
+ Webkit内核浏览器：Safari and Chrome
+  -webkit-transform-origin: x y;
+ Opera
+  -o-transform-origin: x y ;
+ IE9
+  -ms-transform-origin: x y;
+ W3C标准
+  transform-origin: x y ;
+改变中心的基点
+  */
+	div
+	{
+		width:50px;
+		height:50px;
+		background: red;
+		border:1px solid;
+		margin: 40px auto;
+	}
+	.box1
+	{
+		transform: rotate(45deg);
+	}
+	.box2
+	{
+		transform:translateX(100px);
+	}
+	.box3
+	{
+		transform:translateY(10px);
+	}
+	.box4
+	{
+		transform:translate(100px, 30px);
+	}
+	.box5
+	{
+        transform:scale(2,1.5);
+	}
+	.box6
+	{
+		transform:scaleX(2);
+	}
+	.box7
+	{
+		transform:scaleY(2);
+	}
+	.box8
+	{
+		transform:skew(30deg,10deg);
+	}
+	.box9
+	{
+		transform: skewX(30deg);
+	}
+	
+	.box10
+	{
+		transform: skewY(10deg);
+	}
+	
+</style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+    <div class="box4"></div>
+    <div class="box5"></div>
+    <div class="box6"></div>
+    <div class="box7"></div>
+    <div class="box8"></div>
+    <div class="box9"></div>
+    <div class="box10"></div>
+    <div class="box11"></div>
+    <div class="box12"></div>
+    <div class="box13"></div>
+</body>
+</html>

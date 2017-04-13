@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task1</title>
+    <link rel="stylesheet" href="./iconfont/font/iconfont.css">
+    <style>
+        ul,li{
+            margin:0px;
+            padding:0px;
+            list-style:none;
+        }
+        a{
+            text-decoration:none;
+        }
+        .ct{
+            margin: 10px auto;
+            width:200px;
+            background:red;
+            padding:10px;
+
+        }
+        .ct>li{
+            padding:10px;
+            height: 20px;
+            line-height: 20px;
+            color:#fff;
+            border-bottom:1px dashed #fff;
+            position:relative;
+            
+        }
+        i{
+            float:right;
+        }
+        i:hover{
+            cursor:pointer;
+        }
+        .panle{
+            display:none;
+            position:absolute;
+            left: 210px;
+            top:-10px;
+            color:#000;
+            border:1px solid #ccc;
+            width:200px;
+
+        }
+        .panle>li{
+            padding:20px;
+            display:inline-block;
+            text-align:center;
+            
+        }
+        .active{
+            display:block;
+        }
+    </style>
+</head>
+<body>
+
+    <ul class="ct">
+        <li>珠宝玉器
+            <i class="iconfont">&#xe6c3;</i>
+            <ul class="panle">
+                <li><a href="">玉石</a></li>
+                <li><a href="">翡翠</a></li>
+                <li><a href="">水晶</a></li>
+                <li><a href="">珍珠</a></li>
+                <li><a href="">玛瑙</a></li>
+                <li><a href="">珍珠</a></li>      
+            </ul>
+        </li>
+        <li>珠宝玉器
+            <i class="iconfont">&#xe6c3;</i>
+            <ul class="panle">
+                <li><a href="">玉石</a></li>
+                <li><a href="">翡翠</a></li>
+                <li><a href="">玛瑙</a></li>
+                <li><a href="">珍珠</a></li>      
+            </ul>
+
+        </li>
+        <li>珠宝玉器
+            <i class="iconfont">&#xe6c3;</i>
+            <ul class="panle">
+                <li><a href="">玉石</a></li>
+                <li><a href="">翡翠</a></li>
+                <li><a href="">水晶</a></li>
+                <li><a href="">珍珠</a></li>   
+            </ul>
+
+        </li>
+        <li>珠宝玉器
+            <i class="iconfont">&#xe6c3;</i>
+            <ul class="panle">
+                <li><a href="">玉石</a></li>
+                <li><a href="">翡翠</a></li>
+                <li><a href="">水晶</a></li>
+                <li><a href="">珍珠</a></li>
+                <li><a href="">玛瑙</a></li>
+                <li><a href="">珍珠</a></li>  
+        </li>
+       
+    </ul>
+    <script src="jquery-3.2.0.min.js"></script>
+    <script>
+           $('.ct').on('click','li',function(){
+               
+               var $this=$(this);
+               var idx=$this.index();
+               console.log($this);
+               console.log(idx);
+               $('.panle').removeClass('active');
+               $('.panle').eq(idx).addClass('active')
+              
+              
+           })
+            $('.ct').on('mouseleave',function(){
+              $('.panle').removeClass('active')
+           })
+           
+    </script>
+</body>
+</html>

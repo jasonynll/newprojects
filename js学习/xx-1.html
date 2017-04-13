@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+#div1{width:100px;height:100px;background:#0F3;border:1px solid #333;display:none;}
+</style>
+<script>
+window.onload = function(){
+	var oDiv = document.getElementById('div1')
+	var oBt = document.getElementById('input')
+	
+	oBt.onmouseover = function Tab(){
+		oDiv.style.display = 'block'
+	}
+	
+	oBt.onmouseout = function Tac(){
+		oDiv.style.display = 'none'
+	}
+	
+	
+}
+</script>
+</head>
+
+<body>
+<input type="checkbox" id="input" />
+<div id="div1">
+ 请注意你的信息安全~~
+</div>
+</body>
+</html>

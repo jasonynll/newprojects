@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+ <body>
+    <!-- <div id="div1" class="item"><p>我是一个DIV</p></div>  -->
+
+ <!--  // var Div = document.getElementById('div1');
+   // console.log('innerText:'+ Div.innerText);//innerText:我是一个DIV
+//   // console.log('innerHTMl:'+ Div.innerHTML);//innerHTMl:<p>我是一个DIV</p>
+//   // console.log('outerHTML:'+ Div.outerHTML);//outerHTML:<div id="div1" class="item"><p>我是一个DIV</p></div> -->
+
+<!-- <div id="div1" class="ct">1234</div> -->
+
+	<!-- //var Div = document.getElementById('div1');
+	// console.log(Div.getAttribute())
+	// console.log(Div.createAttribute('name'))
+	// console.log(Div.setAttribute('class','ct2'))
+ -->
+
+
+
+<!-- 
+<div id="ct1" class="zyn">123</div>
+<script>
+	var Div = document.getElementById('ct1');
+	var d= document.createAttribute('class');
+	d.value ="zyn1";
+	Div.setAttributeNode(d);//zyn1
+    console.log(Div.getAttribute('id'));//ct1 
+    Div.setAttribute("id", "ct2");//id == ct2
+    Div.removeAttribute('id');//""
+</script>
+ -->
+
+
+<!-- 
+<div id="tc1">
+	<h1>zyn</h1>
+	<p class="p1">zyn-1</p>
+</div>
+
+
+<script>
+	var Div = document.getElementById('tc1');
+	var newDiv = document.createElement("div");
+	var newh2 = document.createElement("h2");
+	var newp = document.createElement("p");
+	var p1 = document.getElementsByClassName('p1');
+
+	newDiv.innerText='zyn-tc1';
+	newh2.innerText = 'zyn';
+	newp.innerText = 'zyn-2';
+
+	Div.appendChild(newDiv);
+	Div.insertBefore(newh2,Div.childNodes[3]);
+	Div.replaceChild(newp,Div.childNodes[4]);
+	Div.removeChild(newDiv);
+</script>
+ -->
+<!-- 
+//指定时间处理程序
+	var btn = document.querySelector("#btn");
+	btn.onclick = function()
+	{
+		alert(this.id)
+	};
+//删除事件处理程序
+btn.onclick= null;	
+ -->
+<!-- 
+	var  btn = document.querySelector("#btn");
+	var handle = function()
+	{
+		alert(this.id);
+	}
+	//指定事件处理程序
+	btn.addEventListener("click", handle,false);
+	//删除事件处理程序
+	btn.removeEventListener("click",handle,false);
+ -->
+
+<!-- 
+	 var btnClick = document.getElementById('btnClick');
+
+    btnClick.addEventListener('click', function() {
+        alert(this.id);
+    }, false);
+
+    btnClick.addEventListener('click', function() {
+        alert('Hello!');
+    }, false);
+    //无法移除
+    btnClick.removeEventListener('click',function(){
+
+    },fasle)
+ -->
+ <!-- 
+ 	var stopPropagation= function(event){
+ 		if(event.stoppropagation()){
+ 			event.stopPropagation();
+ 		}else{
+ 			 
+ 			 event.cancelable = true;
+
+ 		}
+ 	}
+ -->
+ <script>
+ 	var preventDefault= function(event){
+ 		if(event.preventDefault()){
+ 			event.preventDefault();
+ 		}else{
+
+ 			event.returnValue= false;
+ 		}
+ 	}//兼容ie
+ </script>
+</body>
+</html>

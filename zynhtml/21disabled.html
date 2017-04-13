@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    <input type="button" value="点击" disabled="disabled">
+    <input type="button" value="点击" disabled=true>
+
+     <script>
+     	ele.addEventListener('click',function(){
+
+     		this.disabled=true;
+     		ajax();
+     		setTimeout(this.disabled=false,0);
+     	})
+     </script>
+
+
+     <script>
+     // 设置一个开关，初始状态是false，发生点击事件后，开关状态置为true，直到ajax请求完成后，开关状态才会被重新置为false。
+     	var lock = false;
+     	ele.addEventListener('click',function(){
+
+     		if(!lock)
+     		{
+     			lock =true;
+     			ajax();
+     			lock = false;
+     		}
+     	})
+     </script>
+</body><!-- 点击按钮，使用 ajax 获取数据，如何在数据到来之前防止重复点击? -->
+</html>

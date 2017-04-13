@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+#wrap{ width:280px; height:700px; background:url(../jsimg/bj2-2.1.gif) no-repeat; position:relative;}
+#div1{ overflow:auto; border:5px solid #000; border-bottom:1px solid #0F9; width:240px; height:370px; position:absolute; top:80px;left:14px;}
+#div2{ width:240px; height:40px; border-top:2px solid #0F6; position:absolute; border:5px solid #000; border-top:none; bottom:200px;left:14px;}
+#div3{ width:30px; height:34px; border:1px solid #C9F; float:left; margin-top:5px; margin-right:5px;}
+#div3 img{ height:26px; width:25px; padding:5px 3px; }
+#btn{ height:32px; width:140px;margin-top:5px; }
+#span1{ font-size:20px; color:#000;}
+.dial_green{
+			margin-top: 5px;
+			width: 247px;
+			overflow: hidden;
+	
+}
+.dial_green p{
+			display: block;
+			text-align: left;
+			float: left;
+			width: 178px;
+			margin: 0 10px 0;
+			line-height: 24px;
+			
+}
+.dial_green img{
+					float: left;
+}
+.dial_green font{
+				  font-size: 9px;
+				  display: block;
+				  border-radius: 5px;
+				  padding: 5px;
+				  float: left;
+				  line-height: 22px;
+				  border: 2px solid #272822;
+				  background: #3B6F9B;
+}
+
+.dial_black{
+				  margin-top: 5px;
+				  width: 247px;
+				  overflow: hidden;
+	
+}
+.dial_black p{
+				  display: block;
+				  text-align: right;
+				  float: right;
+				  width: 178px;
+				  margin: 0 10px 0;
+				  line-height: 24px;
+	
+}
+.dial_black img{
+					float: right;
+}
+.dial_black font{
+				  font-size: 9px;
+				  display: block;
+				  border-radius: 5px;
+				  padding: 5px;
+				  float: right;
+				  line-height: 22px;
+				  background: #893E9B;
+				  border: 2px solid #272822;
+}
+
+
+
+</style>
+<script>
+window.onload = function(){
+	var oDiv1 = document.getElementById('div1');
+	var oDiv2 = document.getElementById('div2');
+	var oDiv3 = document.getElementById('div3');
+	var oImg  = document.getElementById('img');
+	var oText = document.getElementById('btn');
+	var oSpan = document.getElementById('span1');
+	var onoff= true;
+	
+	oDiv3.onclick = function(){
+		if(onoff){
+			oImg.src = '../jsimg/bj2-2.2.gif';
+			onoff= false;
+		}else{
+			oImg.src = '../jsimg/bj2-2.3.gif';
+			onoff=true;
+		}
+		
+	};
+	
+	 oSpan.onclick=function () {
+		 if(oText.value==''){
+			 alert('请输入');
+		 }else{
+                if(onoff){
+                        oDiv1.innerHTML='<div class="dial_black"><img src="../jsimg/bj2-2.3.gif"><p><font>'+oText.value+'</font></p></div>'+oDiv1.innerHTML;
+                        oText.value='';
+                }else{
+                        oDiv1.innerHTML='<div class="dial_green"><img src="../jsimg/bj2-2.2.gif"><p><font>'+oText.value+'</font></p></div>'+oDiv1.innerHTML;
+                          oText.value='';
+                }
+			
+		 }
+      }
+}
+</script>
+</head>
+
+<body>
+<div id="wrap">
+	<div id="div1"></div>
+    <div id="div2">
+        <div id="div3"><img id="img" src="../jsimg/bj2-2.3.gif"/></div>
+        <input id="btn" type="text" />
+        <span id="span1">发送</span>
+    </div>    
+</div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+#div1{width:200px; height:200px;background:red;position:absolute; left:800px;top:50px;}
+#div2{width:1px; height:300px;background:black;position:absolute;left:300px; top:0px;}
+#div3{width:1px; height:300px;background:black;position:absolute;left:100px; top:0px;}
+</style>
+<script>
+window.onload =function()
+{
+	var oDiv= document.getElementById('div1')
+	var oBtn=document.getElementById('btn')
+	var oBtn1=document.getElementById('btn1')
+	oBtn.onclick= function()
+	{
+		Move(100)
+	}
+	oBtn1.onclick= function()
+	{
+		Move(300)
+	}
+	var timer=null
+	function Move(iTarget)
+	{
+		var oDiv= document.getElementById('div1')
+		timer=setInterval(function(){
+			var speed =0
+			if(oDiv.offsetLeft<iTarget)
+			{
+				speed=7
+			}else
+			{
+				speed=-7
+			}
+			if(Math.abs(iTarget-oDiv.offsetLeft)<=7)
+			{
+				clearInterval(timer)
+				oDiv.style.left=iTarget+'px'
+			}else
+			{
+			  oDiv.style.left=oDiv.offsetLeft+speed+'px'
+			}
+		},30)
+		
+		
+	}
+}
+</script>
+</head>
+
+<body>
+<input id="btn" type="button" value="开始到100"/>
+<input id="btn1" type="button" value="开始到300"/>
+<div id="div1"></div>
+<div id="div2"></div>
+<div id="div3"></div>
+</body>
+</html>

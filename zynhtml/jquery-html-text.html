@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html-text</title>
+</head>
+<body>
+    <p id="test">这是段落中的<b>粗体</b>文本。</p>
+
+    <script src="jquery-3.2.0.min.js"></script>
+    <script>
+        console.log( $('#test').html() );  // 这是段落中的<b>粗体</b>文本。
+        console.log( $('#test').text() );  // 这是段落中的粗体文本
+
+        console.log( $('#test').html('<span>hello</span>' )); // 这是段落中的<b>粗体</b>文本。被替换成hello 
+        console.log( $('#test').text('<span>hello</span>' )); //这是段落中的<b>粗体</b>文本。<span>hello</span>
+
+    </script>
+</body>
+
+</html>

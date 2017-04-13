@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script>
+window.onload = function(){
+	var aBtn =document.getElementsByTagName('input');
+	var aP =document.getElementsByTagName('p');
+	var arr=['亚楠','琳琳','屁的']
+	for(var i=0;i<aBtn.length;i++){
+		aBtn[i].index =i;
+		aBtn[i].onclick =function(){
+			this.value =arr[this.index];
+			aP[this.index].innerHTML = arr[this.index]
+		}
+	};
+};
+</script>
+</head>
+
+<body>
+<input type="button" value="Btn1"/>
+<input type="button" value="Btn1"/>
+<input type="button" value="Btn1"/>
+<p>a</p>
+<p>b</p>
+<p>c</p>
+</body>
+</html>

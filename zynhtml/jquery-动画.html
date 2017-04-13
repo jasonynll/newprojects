@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动画</title>
+    <style>
+        div{
+            width:100px;
+            height: 100px;
+            background:red;
+        }
+        #div3{
+            width:100px;
+            height: 100px;
+            background:red;
+            position:relative;
+        }
+    </style>
+</head>
+<body>
+    <!--.hide([duration ] [,easing ] [,complete ])
+    1.duration：动画持续多久
+    2.easing：表示过渡使用哪种缓动函数，jQuery自身提供"linear" 和 "swing"
+    3.complete：在动画完成时执行的函数
+    .show( [duration ] [, easing ] [, complete ] )
+     用于显示元素，用法和hide类似-->
+  <p id="p1">我是段落1</p>
+  <button id="btn1">隐藏</button>
+  <button id="btn2">展示</button>
+  <button id="btn3">切换toggle</button>
+  <button id="btn4">切换非toggle</button>
+
+
+  <div id="div1"></div>
+  <button id="btn5">fadeIn</button>
+  <button id="btn6">fadeOut</button>
+  <button id="btn7">切换toggle</button>
+  <button id="btn8">切换非toggle</button>
+
+
+  <div id="div2"></div>
+  <button id="btn9">slideDown</button>
+  <button id="btn10">slideUp</button>
+  <button id="btn11">切换toggle</button>
+  <button id="btn12">切换非toggle</button>
+
+</br>
+
+<button id="btn13">变宽</button>
+<button id="btn14">复原</button>
+<button id="btn15">变宽变大移动</button>
+<button id="btn16">多个动画</button>
+<button id="btn17">stop</button>
+<div id="div3"></div>
+    <script src="jquery-3.2.0.min.js"></script>
+    <script>
+        $('#btn1').on('click',function(){
+            $('#p1').hide(1000,function(){
+                alert(1)
+            });
+        })
+         $('#btn2').on('click',function(){
+            $('#p1').show(1000);
+        })
+        $('#btn3').on('click',function(){
+            $('#p1').toggle();
+            // .toggle( [duration ] [, easing ] [, complete ] )
+            //  事件处理套件也有一个名为.toggle()方法。哪一个被调用取决于传递的参数的设置
+            //  用来切换元素的隐藏、显示，类似于toggleClass，用法和show、hide类似
+        })
+
+        var isShow =true;
+         $('#btn4').on('click',function(){
+             if(isShow){
+                 $('#p1').hide()
+                 isShow = false;
+             }else{
+                  $('#p1').show()
+                 isShow = true;
+             } 
+            
+        })
+
+    </script>
+    <script>
+        // fadeIn,fadeOut,fadeToggle与show类似；
+        // .fadeTo( duration, opacity [, easing ] [, complete ] )
+        // 调整匹配元素的透明度，方法通过匹配元素的不透明度做动画效果
+        $('#btn5').on('click',function(){
+            $('#div1').fadeIn(1000);
+        })
+        $('#btn6').on('click',function(){
+            $('#div1').fadeOut(1000);
+        })
+        $('#btn7').on('click',function(){
+            $('#div1').fadeToggle();
+        })
+    </script>
+    <script>
+        //slideDown,slideUp,slideToggle,( [duration ] [, easing ] [, complete ] )
+        $('#btn9').on('click',function(){
+            $('#div2').slideDown(1000)
+        })
+        $('#btn10').on('click',function(){
+            $('#div2').slideUp(1000)
+        })
+        $('#btn11').on('click',function(){
+            $('#div2').slideToggle()
+        })
+    </script>
+    <script>
+          $('#btn13').on('click',function(){
+              $('#div3').animate({width:'200px'},1000)
+          })
+         $('#btn14').on('click',function(){
+              $('#div3').animate({
+                  width:'100px',
+                  height:'100px',
+                  left:'0px',
+                  top:'0px',
+                  opacity:1
+
+              },500,function(){
+                  console.log(1)
+              })
+          })
+            $('#btn15').on('click',function(){
+              $('#div3').animate({
+                  width:'200px',
+                  height:'200px',
+                  left:'100px',
+                  top:'100px',
+                  opacity:0
+                  
+                  },1000)
+          })
+
+
+             var pos = [
+                 {left:'100px',top:0},
+                 {left:'100px',top:'50px'},
+                 {left:'0px',top:'50'},
+                 {left:0,top:0},
+             ]
+            var isMove = false;
+            $('#btn16').on('click',function(){
+                
+                if(!isMove){
+                        isMove = true;
+                    $('#div3').animate(pos[0])
+                    $('#div3').animate(pos[1])
+                    $('#div3').animate(pos[2])
+                    $('#div3').animate(pos[3],function(){
+                        isMove = false;
+                    })
+                }
+                   
+
+                // $.each(pos,function(){
+                //     $('#div3').animate(this);
+                // })
+              
+          })
+
+
+          $('#btn17').on('click',function(){
+            //$('#div3').stop(true,true);
+            $('#div3').finish();
+             //清空动画队列
+          })
+    </script>
+</body>
+</html>

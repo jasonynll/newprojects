@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<link id="li" href="" rel="stylesheet" /> 
+<script>
+window.onload =function(){
+	var oBtn1 = document.getElementById('btn1')
+	var oBtn2 = document.getElementById('btn2')
+	var oLi= document.getElementById('li')
+	
+	oBtn1.onclick = function(){
+		oLi.href ='xx-1.css'
+	}
+	oBtn2.onclick = function(){
+		oLi.href ='xx-2.css'
+	}
+	
+}
+
+
+</script>
+</head>
+
+<body>
+<input id="btn1" type="button" value="皮肤1" />
+<input id="btn2" type="button" value="皮肤2" />
+</body>
+</html>

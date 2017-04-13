@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task1</title>
+    <style>
+  .bg{
+      background:red;
+  }
+
+#div3 .box3{
+			border: 1px solid #ccc;
+			width: 150px;
+			height: 150px;
+		}
+    </style>
+</head>
+<body>
+ <div id="div1">
+		<h3>1.当点击$btn 时，让 $btn 的背景色变为红色再变为蓝色</h3>
+		<button class="btn">点击变换颜色</button>
+ </div>
+ </br>
+ </br>
+ <div id="div2">
+		<h3>2.当窗口滚动时，获取垂直滚动距离</h3>
+		<div class="box2">
+			<p>div垂直的滚动距离为:<span>0px</span></p>
+		</div>
+  </div>
+  </br>
+  </br>
+  <div id="div3">
+		<h3>3.当鼠标放置到$div 上，把$div 背景色改为红色，移出鼠标背景色变为白色</h3>
+		<div class="box3"></div>
+  </div>
+  </br>
+  </br>
+  <div id="div4">
+		<h3>4.当鼠标激活 input 输入框时让输入框边框变为蓝色，当输入框内容改变时把输入框里的文字小写变为大写，当输入框失去焦点时去掉边框蓝色，控制台展示输入框里的文字</h3>
+		<input class="txt" type="text" placeholder="请输入英文字母">
+ </div>
+ </br>
+ </br>
+ <div id="div5">
+		<h3>5.当选择 select 后，获取用户选择的内容</h3>
+		<select name="happy" class="good" >
+            <option value="0" selectd>请选择</option>
+			<option value="1">舞蹈</option>
+			<option value="2">瑜伽</option>
+			<option value="3">音乐</option>
+			<option value="4">旅行</option>
+		</select>
+		<p>用户选择的内容是:<span></span></p>
+	</div>
+ 
+ </br>
+ </br>
+ 
+    <script src="jquery-3.2.0.min.js"></script>
+    <script>
+        var $btn = $('.btn')
+        $btn.on('click',function(){
+            $(this).css({background:'red'})
+            setTimeout(function(){
+                $('.btn').css({background:'blue'})
+            },1000)
+         
+        })
+        $(window).on('scroll',function(){
+              $('.box2 span').text(($(this).scrollTop()));
+        })
+
+
+        var $div3 = $('.box3')
+        $div3.on('mouseenter',function(){
+              $div3.addClass('bg')
+        })
+         $div3.on('mouseleave',function(){
+              $div3.removeClass('bg')
+        })
+
+        var $input = $('.txt')
+        $input.on('focus',function(){//focus获取焦点事件
+              $input.css({border:'1px solid blue'})
+        
+        })
+        $input.on('keyup',function(){
+            $(this).val(function(index,val){
+                return val.toUpperCase()
+               
+            })
+        })
+        $("input").on("blur",function(){//blur失去焦点事件
+            $(this).css("border","");
+            if($(this).val()!=""){
+          console.log($(this).val());
+            }
+  
+        });
+        $("#div5 span").text($(".good option:selected").text());
+        $("#div5 .good").on("change",function(){
+        
+           $("#div5 span").text($(".good option:selected").text());
+        });
+
+    </script>
+</body>
+</html>

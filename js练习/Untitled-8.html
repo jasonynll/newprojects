@@ -1,0 +1,110 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>QQ列表课后作业</title>
+
+<style>
+    ul,h2{ margin:0; padding:0;}
+    li{ list-style:none;}
+    #list{ width:220px; margin:0 auto;border:1px solid #F30; border-top:none; }
+    h2{ font:normal 14px/30px Arial; border-top:1px solid #F30; background:#F96 url(img/dot.png) no-repeat 6px 11px; text-indent:20px;}
+    .lis ul{ display:none;}
+    .lis li{ border-top:1px solid #F30; font:normal 12px/24px Arial; text-indent:24px;}
+    .active{ background:#F93 url(img/dot.png) no-repeat 6px -16px; color:#111;}
+    .book{ background:#FC9;}
+</style>
+
+
+</head>
+
+<body>
+
+<ul id="list">
+    <li class="lis">
+        <h2>我的好友</h2>
+        <ul>
+            <li>徐小文</li>
+            <li>曾晓萌</li>
+            <li>基督教</li>
+        </ul>
+    </li>
+    <li class="lis">
+        <h2>高中童鞋</h2>
+        <ul>
+            <li>瓦房店</li>
+            <li>卡迪夫</li>
+            <li>儿科非</li>
+            <li>二号凤凰</li>
+        </ul>
+    </li>
+    <li class="lis">
+        <h2>陌生人</h2>
+        <ul>
+            <li>神马妹</li>
+            <li>都冻结的</li>
+        </ul>
+    </li>
+</ul>
+
+
+<script>
+    var oUl=document.getElementById('list');
+    var aH2=oUl.getElementsByTagName('h2');
+    var aUl=oUl.getElementsByTagName('ul');
+    var aLi=null;
+    var arrLi=[];
+    
+    for(var i=0; i<aH2.length;i++){
+        aLi=aUl[i].getElementsByTagName('li');
+        for(var j=0; j<aLi.length;j++){
+            arrLi.push(aLi[j]);
+            }
+        }
+        
+    for(var i=0; i<aH2.length;i++){
+        aH2[i].index=i;
+        aH2[i].onclick=function(){
+            for(var i=0; i<aH2.length;i++){
+                for(var j=0;j<arrLi.length;j++){
+                    arrLi[j].className='';
+                    }
+                    if(i!=this.index){
+                    aUl[i].style.display='none';
+                    aH2[i].className='';
+                    }
+                }
+            if(this.className==''){
+                aUl[this.index].style.display='block';
+                this.className='active';}
+            else{
+                aUl[this.index].style.display='none';
+                this.className='';
+                
+                }
+            }
+        }
+        
+
+    for(var i=0;i<arrLi.length;i++){
+        arrLi[i].onclick=function(){
+            for(var i=0; i<arrLi.length;i++){
+                if(arrLi[i]!=this){
+                arrLi[i].className='';
+                }
+                }
+            if(this.className==''){
+                this.className='book';
+                }
+            else{
+                this.className='';
+                }
+            }
+        }    
+
+</script>
+</body>
+</html>
+
+

@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+div{ height:100px;background:red; border:1px solid black}
+
+</style>
+<script>
+ setInterval(function(){
+	 var oDiv1= document.getElementById('div1')
+	 oDiv1.style.width=parseInt(oDiv1.style.width)-1+'px'
+	
+},30)
+</script>
+</head>
+
+<body>
+<div id="div1" style="width:200px;"></div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<scirpt>
+ function ajax(opts){
+     var xhr;
+        if (window.XMLHttpRequest) {
+            xhr = new XMLHttpRequest();
+        } else {
+            xhr = new ActiveXObject('Microsoft.XMLHTTP');
+        }
+     xhr.onreadystatechange = function(){
+         if(xhr.readyState == 4 && xhr.status == 200||xhr.status == 304){
+             var results = JSON.parse(xhr.responseText);
+             opts.success(results);
+         }
+         if(xhr.status == 404){
+             opts.error();
+         }
+     }
+     var dataStr ='';
+     for(var key in opts.data){
+         dataStr+ = key+'='+opts.data[key]+'&';
+     }
+     dataStr = dataStr.substr(0,dataStr.length-1);
+     if(opt.type.toLowerCase()==='get'){
+         
+         xhr.open('get',opts.url+'?'+dataStr,true);
+         xhr.send();
+     }
+     if(opt.type.toLowerCase()==='post'){
+
+         xhr.open('post',opts.url,true);
+         xhr.sendRequestHeader('Content-type','application/x-www-form-urlencoded');
+         xhr.send(dataStr);
+     }
+ };
+
+document.querySelector('#btn').addEventListener('click',function(){
+
+    ajax({
+
+        url:'getData.php', //接口地址
+        type:'get', //类型 ：post||get 
+        data:{
+            username:'xiaoming',
+            password:'abcd1234'
+        },
+        success:function(ret){
+            console.log(ret);
+        },
+        error:function(){
+            console.log('出错了')
+        }
+    })
+
+})
+</scirpt>

@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+#div1{ height:281px; width:500px; margin:50px auto; position:relative; overflow:hidden;}
+ul,ol{ margin:0px; padding:0px; list-style:none;}
+#ul{ width:500px; height:281px; position:absolute;}
+ol{ position:absolute; bottom:0px; right:0px; z-index:10}
+ol li{ font-size:20px; background:#FC0; display:inline-block; height:30px; line-height:30px; text-align:center; width:20px;}
+.active{background:red; color:#000;text-align:center;width:20px;height:30px;line-height:30px;}
+img{ vertical-align:top}
+
+</style>
+<script>
+function getStyle(obj,name)
+{
+	if(obj.currentStyle)
+	{
+		return obj.currentStyle[name]
+	}else
+	{
+		return  getComputedStyle(obj,false)[name]
+	}
+}
+
+function Move(obj,json,fnEnd)
+{
+	clearInterval(obj.timer)
+	obj.timer=setInterval(function(){
+		var bStop=true;
+		for(var attr in json)
+		{
+			var cur=0
+			if(cur=='opacity')
+			{
+				cur=Math.round(parseFloat(getStyle(obj,attr))*100)
+			}else
+			{
+				cur=parseInt(getStyle(obj,attr))
+			}
+			
+			var speed=(json[attr]-cur)/5
+			speed=speed>0?Math.ceil(speed):Math.floor(speed)
+			
+			if(cur!=json[attr])
+			{
+				bStop=false
+			}
+			
+			if(cur=='opacity')
+			{
+				obj.style.filter='alpha(opacity:'+(cur+speed)+')'
+				obj.style.opacity=(cut+speed)/100
+			}else
+			{
+				obj.style[attr]=cur+speed+'px'
+			}
+			
+		}
+		
+		if(bStop)
+		{
+			clearInterval(obj.timer)
+			if(fnEnd)fnEnd();
+		}
+	},30)
+}
+
+window.onload=function()
+{
+	var oDiv=document.getElementById('div1')
+	var aBtn=oDiv.getElementsByTagName('ol')[0].getElementsByTagName('li')
+	var oUl = oDiv.getElementsByTagName('ul')[0]
+	var now=0;
+	
+	for(var i=0;i<aBtn.length;i++)
+	{
+		aBtn[i].index=i
+		aBtn[i].onclick=function()
+		{   
+		    now=this.index
+			tab()
+			
+		}
+	}
+	function tab()
+	{
+		for(var i=0;i<aBtn.length;i++)
+			{
+				aBtn[i].className=''
+			}
+			aBtn[now].className='active'
+			Move(oUl,{top:-281*now})
+	}
+	function next()
+	{
+		now++
+		if(now==aBtn.length)
+		{
+			now=0;
+		}
+		tab();
+	}
+	
+	var timer=setInterval(next,2000)
+	
+	oDiv.onmouseover =function()
+	{
+		clearInterval(timer)
+	}
+	oDiv.onmouseout=function()
+	{
+		timer=setInterval(next,2000)
+	}
+}
+</script>
+</head>
+
+<body>
+<div id="div1">
+    <ol>
+    	<li class="active">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+    </ol>
+    <ul id="ul">
+      <li><img src="../jsimg/bj1.jpg"></li>
+      <li><img src="../jsimg/bj2.jpg"></li>
+      <li><img src="../jsimg/bj3.jpg"></li>
+      <li><img src="../jsimg/bj4.jpg"></li>
+      <li><img src="../jsimg/bj5.jpg"></li>
+      <li><img src="../jsimg/bj6.jpg"></li>
+    </ul>
+</div> 
+</body>
+</html>

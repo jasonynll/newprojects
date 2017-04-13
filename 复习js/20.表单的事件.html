@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+window.onload = function()
+{
+	var oForm = document.getElementById('form')
+	
+	oForm.onsubmit= function()
+	{
+		alert('aaaa')
+	}
+	oForm.onreset= function()
+	{
+		alert('bbbb')
+	}
+	
+	
+}
+</script>
+</head>
+
+<body>
+<form id="form">
+<input type="text" name="user" />
+<input type="password"  name="word" />
+<input type="submit"  />
+<input type="reset"  />
+</form>
+</body>
+</html>

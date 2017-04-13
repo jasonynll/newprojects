@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+window.onload = function()
+{
+	var oTxt=document.getElementById('txt1')
+	var oBtn=document.getElementById('btn')
+	
+	oBtn.onclick= function()
+	{
+		var oNewWin=window.open('about:blank','_blank')
+		//oNewWin.document.write('dasdsadsadsa')
+		oNewWin.document.write(oTxt.value)
+	}
+}
+</script>
+</head>
+
+<body>
+<textarea id="txt1" cols="40" rows="4"></textarea><br/>
+<input id="btn" type="button" value="运行" />
+</body>
+</html>

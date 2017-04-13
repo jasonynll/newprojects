@@ -1,0 +1,237 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+ul{margin:0px; padding:0px;}
+li{list-style:none;}
+img{vertical-align:top; border:0px;}
+body{ background:#666;}
+#yd{width:500px; margin:50px auto 0; height:700px; background:#999; }
+.big{ width:500px;height:500px;position:relative; background:#222; overflow:hidden;}
+.big li{ width:500px;height:500px; position:absolute;top:0px;left:0px; z-index:0;overflow:hidden;}
+.left{width:250px; height:500px; position:absolute;left:0px; top:0px; background:red;z-index:3000; opacity:0;}
+.right{width:250px; height:500px; position:absolute;left:250px; top:0px; background:green;z-index:3000; opacity:0;}
+.prev{ background:url(../imgdsq/zc.jpg) no-repeat; width:90px;height:90px; position:absolute;top:200px; left:0px; z-index:3001; opacity:0}
+.next{ background:url(../imgdsq/yc.jpg) no-repeat; width:90px;height:90px; position:absolute;top:200px; right:0px; z-index:3001; opacity:0}
+.small{ width:500px; height:200px;overflow:hidden; position:relative}
+.small ul{ width:500px;heiht:200px; position:absolute; left:0px; top:0px;}
+.small li{ width:100px; height:100px; float:left;  padding:50px 0; padding-left:50px; opacity:0.6}
+.small li img{height:100px;width:100px}
+</style>
+<script>
+function getStyle(obj,name)
+{
+	if(obj.currentStyle)
+	{
+		return obj.currentStyle[name]
+	}else
+	{
+		return getComputedStyle(obj,false)[name]
+	}
+}
+
+
+function Move(obj,attr,iTarget)
+{
+	clearInterval(obj.timer)
+	obj.timer=setInterval(function(){
+		var cur=0 
+		if(attr=='opacity')
+		{
+			cur=Math.round(parseFloat(getStyle(obj,attr))*100)
+		}else
+		{
+			cur=parseInt(getStyle(obj,attr))
+		
+		}
+		var speed =(iTarget-cur)/6
+		speed=speed>0?Math.ceil(speed):Math.floor(speed)
+		if(cur==iTarget)
+		{
+			clearInterval(obj.timer)
+		}else
+		{
+			if(attr=='opacity')
+			{
+				obj.style.filter='alpha(opacity:'+(cur+speed)+')'
+				obj.style.opacity=(cur+speed)/100
+				
+				
+				
+			}else{
+				
+			   obj.style[attr]=cur+speed+'px'
+			}
+		}
+		
+	},30)
+}
+function getByClass(oparent,sClass)
+{
+	var aEle= oparent.getElementsByTagName('*')
+	var aResult=[]
+	
+	for(var i=0;i<aEle.length;i++)
+	{
+		if(aEle[i].className==sClass)
+		{
+			aResult.push(aEle[i])
+		}
+	}
+	
+	return aResult;
+}
+window.onload =function()
+{
+	var oDiv = document.getElementById('yd')
+	var oBtnPrev =getByClass(oDiv,'prev')[0]
+	var oBtnNext =getByClass(oDiv,'next')[0]
+	var oLeft =getByClass(oDiv,'left')[0]
+	var oRight =getByClass(oDiv,'right')[0]
+	
+	var oSmall=getByClass(oDiv,'small')[0]
+	var oUlSmall=oSmall.getElementsByTagName('ul')[0]
+	var aLiSmall=oSmall.getElementsByTagName('li')
+	
+	var oBig=getByClass(oDiv,'big')[0]
+	var aLiBig=oBig.getElementsByTagName('li')
+	
+	var nowZIndex=2
+	var now=0
+	
+	oUlSmall.style.width=aLiSmall.length*aLiSmall[0].offsetWidth+300+'px'
+	//左右按钮
+	oBtnPrev.onmouseover=oLeft.onmouseover = function()
+	{
+		Move(oBtnPrev,'opacity',100)
+	}
+	oBtnPrev.onmouseout=oLeft.onmouseout = function()
+	{
+		Move(oBtnPrev,'opacity',0)
+	}
+	oBtnNext.onmouseover=oRight.onmouseover = function()
+	{
+		Move(oBtnNext,'opacity',100)
+	}
+	oBtnNext.onmouseout=oRight.onmouseout = function()
+	{
+		Move(oBtnNext,'opacity',0)
+	}
+	
+	//大图切换
+	for(var i=0;i<aLiSmall.length;i++)
+	{    
+	    aLiSmall[i].index=i
+		aLiSmall[i].onclick=function()
+		{
+			if(this.index==now)return;
+			now=this.index
+			
+			Tab()
+			
+		}
+		
+		aLiSmall[i].onmouseover= function()
+		{
+			Move(this,'opacity',100)
+		}
+		aLiSmall[i].onmouseout= function()
+		{
+			if(this.index!=now)
+			{
+			  Move(this,'opacity',60)
+			}
+		}
+	}
+	function Tab()
+	{
+		aLiBig[now].style.zIndex=nowZIndex++;
+			for(var i=0;i<aLiSmall.length;i++)
+			{
+				Move(aLiSmall[i],'opacity',60)
+			}
+			
+			Move(aLiSmall[now],'opacity',100)
+			
+			aLiBig[now].style.height=0
+			Move(aLiBig[now],'height','500')
+			
+			if(now==0)
+			{
+				Move(oUlSmall,'left',0)
+			}else if(now==aLiSmall.length-1)
+			{
+				Move(oUlSmall,'left',-(now-2)*aLiSmall[0].offsetWidth)
+			}else{
+			
+			    Move(oUlSmall,'left',-(now-1)*aLiSmall[0].offsetWidth)
+			}
+	}
+	
+	oBtnPrev.onclick= function()
+	{
+		now--;
+		if(now==-1)
+		{
+			now=aLiSmall.length-1
+		}
+		Tab()
+	}
+	
+	oBtnNext.onclick = function()
+	{
+		now++;
+		if(now==aLiSmall.length)
+		{
+			now=0
+		}
+		Tab()
+	}
+	
+	// var timer=setInterval(oBtnNext.onclick,2000)
+	
+	// oDiv.onmouseover= function()
+	// {
+	// 	clearInterval(timer)
+	// }
+	// oDiv.onmouseout= function()
+	// {
+	// 	timer=setInterval(oBtnNext.onclick,2000)
+	
+	// }
+	// alert('老爹')
+}
+</script>
+</head>
+
+<body>
+<div id="yd">
+		<ul class="big">
+        	<div class="prev"></div>
+            <div class="next"></div>
+            
+            <a class="left" href="javascript:;"></a>
+            <a class="right" href="javascript:;"></a>
+            
+        	<li style="z-index:1"><img src="../imgdsq/1big.jpg"</li>
+            <li><img src="../imgdsq/2big.jpg"</li>
+            <li><img src="../imgdsq/3big.jpg"</li>
+            <li><img src="../imgdsq/4big.jpg"</li>
+            <li><img src="../imgdsq/5big.jpg"</li>
+            <li><img src="../imgdsq/6big.jpg"</li>
+        </ul>
+        <div  class="small">
+        	<ul>
+            	<li style="opacity:1"><img src="../imgdsq/1s.jpg"</li>
+                <li><img src="../imgdsq/2s.jpg"</li>
+                <li><img src="../imgdsq/3s.jpg"</li>
+                <li><img src="../imgdsq/4s.jpg"</li>
+                <li><img src="../imgdsq/5s.jpg"</li>
+                <li><img src="../imgdsq/6s.jpg"</li>
+            </ul>
+        </div>
+</div>
+</body>
+</html>

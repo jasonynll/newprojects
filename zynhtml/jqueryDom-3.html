@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jquery的事件处理</title>
+    <style>
+        ul,li{
+            margin: 0px;
+            padding:0px;
+            list-style: none;
+        }
+        .ct>li{
+            border: 1px solid #ccc;
+            padding:10px;
+            margin:10px;
+        }
+        .text{
+            margin: 10px;
+            padding:10px;
+            background:yellow;
+
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="ct">
+        <li>今天</li>
+        <li>天气</li>
+        <li>不错</li>
+        <li>啊啊</li>
+    </ul>
+    <div class="text"></div>
+    <button class="btn">添加</button>
+    <script src="jquery-3.2.0.min.js"></script>
+    <script>
+    //  $('.ct>li').on('click',function(){
+    //           var str =$(this).text();
+    //           $('.text').text(str)
+
+    // })
+    
+
+    //事件代理
+
+    $('.ct').on('click.zyn','li',function(){
+        var str =$(this).text();
+        $('.text').text(str)
+
+    })
+    $('.ct').on('click.console','li',function(){
+      console.log($(this).text());
+
+    })
+     $('.ct').off('click.console')//.off()解除绑定click.xxxx对应解绑对应的click
+
+    $('.btn').on('click',function(){
+        var  str = +new Date()
+        $('.ct').append('<li>'+str+'</li>')
+    })
+    
+    // $('.btn').one('click',function(){ //one只能触发一次
+    //     var  str = +new Date()
+    //     $('.ct').append('<li>'+str+'</li>')
+    // })
+
+
+ // $('.ct').bind('click',function(){})
+ // $('.ct').unbind('click') jquery1.7以前的老版本绑定事件
+
+ $('.btn').trigger('click')//模拟触发事件
+   
+$(window).on('resize',function(){
+    console.log($(window).width(),$(window).height());//resize改变窗口大小
+})
+$(window).on('scroll',function(){
+    console.log($(window).scrollTop()) //scroll 鼠标滚动
+})
+    </script>
+
+</body>
+</html>

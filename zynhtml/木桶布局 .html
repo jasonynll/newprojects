@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>木桶布局</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <link href="" rel="stylesheet">
+ 
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+
+    .img-preview{
+      width: 1000px;
+      margin: 0 auto;
+    }
+
+    .img-row {
+      margin-bottom: 8px;
+    }
+
+    .img-row:after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+
+    .img-box {
+      float: left;
+    }
+
+    .img-line .img-box:first-child {
+      padding-left: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="img-preview"></div>
+
+   
+</body>
+<script src="jquery-3.2.0.min.js"></script>
+<script>
+   
+    function Barrels($ct){
+        this.$ct= $ct;
+        this.imgNum=40;
+        this.baseHeight=100;
+        this.rowList =[];
+        this.loadImg();
+    }
+
+    Barrels.prototype = {
+
+        loadImg: function(){
+            var _this =this;
+            var imgUrls = this.getImgUrls(20);
+            
+           $.each(imgUrls,function(idx,url){
+               console.log(url)
+                var img = new Image();
+                img.src =url;
+                img.onload =function(){
+                    var originWidth=img.width,
+                        originHeight=img.height,
+                        ratio =originWidth/originHeight;
+                        
+                    var imgInfo ={
+                        target:$(img),
+                        width:_this.baseHeight*ratio,
+                        height:_this.baseHeight,
+                        ratio:ratio
+                    }
+              
+                    _this.render(imgInfo);
+                }
+             });
+
+        },
+        render:function(imgInfo){//图片来了后
+            var _this = this;
+            var rowList =this.rowList;
+            var clientWidth = this.$ct.width();
+            var rowWidth =0;
+            var rowHeight=0;
+            var lastImgInfo =imgInfo;
+
+           this.rowList.push(imgInfo);
+           $.each(rowList,function(idx,imgInfo){
+                   rowWidth =rowWidth+imgInfo.width;//计算img的宽度；
+           
+           if(rowWidth>clientWidth){//如果图片宽度>窗口宽度
+               rowList.pop()//去掉最后一张图片
+               rowWidth =rowWidth-lastImgInfo.width;//rowWith/200 == clientWidth/x; 拉伸图片让图片填满可视区
+               rowHeight = clientWidth* _this.baseHeight/rowWidth;
+               _this.createRow( rowHeight);//渲染前面的图片；
+               _this.rowList =[];//在把数组清空
+               _this.rowList.push(lastImgInfo);//把刚才最后一张图片放进数组里；
+
+             }
+
+           });
+           
+
+                
+
+        },
+        createRow:function(rowHeight){
+            console.log('createRow');
+            var  $rowCt =$('<div class="img-row"></div>');
+            $.each(this.rowList,function(idx,imgInfo){
+                var $imgCt = $('<div class="img-box"></div>'),
+                    $img = imgInfo.target;
+                    $img.height( rowHeight);
+                    $imgCt.append($img);
+                    $rowCt.append($imgCt);
+            })
+            console.log(this.$ct);
+            this.$ct.append($rowCt);
+
+        },
+        getImgUrls:function(num){
+           var color, width, height, urls =[];
+           for(var i=0;i<num; i++){
+                color = Math.random().toString(16).substring(2,8);
+                width = Math.floor(Math.random()* 100 + 50);
+                height = Math.floor(Math.random()* 30 + 50);
+                urls.push("http://placehold.it/"+ width +"x"+ height +"/"+ color +"/fff");
+            }
+              return  urls;
+        }
+      
+    }
+   
+       var barrels =   new Barrels($('.img-preview'))
+</script>
+</html>

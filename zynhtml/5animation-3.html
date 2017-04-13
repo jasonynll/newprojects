@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>aniamtion</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+body
+{
+	padding:0;
+	margin:0;
+}
+
+.polling_message {
+  color:white;
+  float:left;
+  margin-right:2%;            
+}
+
+.view_port {
+  background-color:black;
+  height:25px;
+  width:100%;
+  
+}
+
+
+.cylon_eye-1{
+  color:white;
+  height: 25px;
+  width: 20%;
+
+  
+
+  background-color: red;
+  background-image: -webkit-linear-gradient(left, rgba( 0,0,0,0.9 ) 25%, rgba( 0,0,0,0.1 ) 50%, rgba( 0,0,0,0.9 ) 75%);
+  background-image:    -moz-linear-gradient(left, rgba( 0,0,0,0.9 ) 25%, rgba( 0,0,0,0.1 ) 50%, rgba( 0,0,0,0.9 ) 75%);
+  background-image:     -ms-linear-gradient(left, rgba( 0,0,0,0.9 ) 25%, rgba( 0,0,0,0.1 ) 50%, rgba( 0,0,0,0.9 ) 75%);
+  background-image:      -o-linear-gradient(left, rgba( 0,0,0,0.9 ) 25%, rgba( 0,0,0,0.1 ) 50%, rgba( 0,0,0,0.9 ) 75%);
+  background-image:         linear-gradient(to right, rgba( 0,0,0,0.9 ) 25%,rgba( 0,0,0,0.1 ) 50%, rgba( 0,0,0,0.9 ) 75%);
+
+  -webkit-animation: move_eye 4s linear 0s infinite alternate;
+     -moz-animation: move_eye 4s linear 0s infinite alternate;
+       -o-animation: move_eye 4s linear 0s infinite alternate;
+          animation: move_eye 4s linear 0s infinite alternate;
+}
+.cylon_eye-2
+{
+  color:white;
+  height: 25px;
+  width: 20%;
+
+  
+
+  background-color: red;
+	 -webkit-animation: move_eye 4s linear 0s infinite alternate;
+     -moz-animation: move_eye 4s linear 0s infinite alternate;
+       -o-animation: move_eye 4s linear 0s infinite alternate;
+          animation: move_eye 4s linear 0s infinite alternate;
+}
+
+  @-webkit-keyframes move_eye { from { margin-left:-20%; } to { margin-left:100%; }  }
+   @-moz-keyframes move_eye { from { margin-left:-20%; } to { margin-left:100%; }  }
+     @-o-keyframes move_eye { from { margin-left:-20%; } to { margin-left:100%; }  }
+        @keyframes move_eye { from { margin-left:-20%; } to { margin-left:100%; }  }
+
+
+
+</style>
+</head>
+<body>
+
+<div class="view_port ">
+  <div class="polling_message">
+    Listening for dispatches
+  </div>
+  <div class="cylon_eye-1"></div>
+  <div class="cylon_eye-2 "></div>
+</div>
+</div>
+</body>
+</html>

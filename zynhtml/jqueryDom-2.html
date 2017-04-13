@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jquery属性操作</title>
+    <style>
+    .box{
+            width:100px;
+            height: 100px;
+            background:red;
+        }
+    .box.active{
+            width:200px;
+            height: 100px;
+            background:green;
+        }
+
+    .box1{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    .box1.active{
+            width:200px;
+            height: 100px;
+            background:green;
+        }
+    .box2{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    .box2.active{
+            width:200px;
+            height: 100px;
+            background:green;
+        }
+ 
+    </style>
+</head>
+<body>
+    <script src="jquery-3.2.0.min.js"></script>
+    <input id="username" type="text">
+    <button class="btn1">图片1</button>
+    <button class="btn2">图片2</button>
+    <img class="baidu" src="https://www.baidu.com/img/bd_logo1.png" alt="">
+    <ul class="list">
+        <li  data-src="https://www.baidu.com/img/bd_logo1.png">1</li>
+        <li  data-src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3689221090,1461223233&fm=23&gp=0.jpg">2</li>
+        <li  data-src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=919635406,2126895069&fm=23&gp=0.jpg">3</li>
+        <li  data-src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=4120343773,3557702269&fm=23&gp=0.jpg">4</li>
+    </ul>
+    <div class="box"></div>
+    <button class="btn4">变色</button>
+    <button class="btn5">变色</button>
+
+
+    <div class = "box1"></div>
+    <button class="btn6">变色</button>
+     <div class = "box2"></div>
+    <button class="btn7">变色</button>
+
+<script>
+    //   .val([value])这是一个读写双用的方法，
+    // 用来处理input的value，当方法没有参数的时候返回input的value值，
+    // 当传递了一个参数的时候，方法修改input的value值为参数值
+    $('#username').val('123');
+
+    // .attr(attributeName)
+    // 获取元素特定属性的值
+    // 为元素属性赋值
+   console.log($('.baidu').attr('src'))//获取属性值
+  $('.baidu').attr('src','https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3689221090,1461223233&fm=23&gp=0.jpg')
+    //设置src属性的值
+    $('.btn1').on('click',function(){
+        $('.baidu').attr('src','https://www.baidu.com/img/bd_logo1.png')
+    })
+     $('.btn2').on('click',function(){
+        $('.baidu').attr('src','https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3689221090,1461223233&fm=23&gp=0.jpg')
+    })
+    $('.list>li').on('click',function(){
+        console.log(this)//点击出的this是原生dom对象li
+        var url = $(this).attr('data-src');//所以加上$
+        $('.baidu').attr('src',url)
+
+    })
+    
+    // .removeAttr()
+    // 为匹配的元素集合中的每个元素中移除一个属性（attribute）
+
+    // .removeAttr() 方法使用原生的 JavaScript removeAttribute() 函数,
+    // 但是它的优点是可以直接在一个 jQuery 对象上调用该方法，
+    // 并且它解决了跨浏览器的属性名不同的问题。
+    $('.baidu').removeAttr('src');
+
+    // .prop()/.removeProp()
+
+    //  这两个方法是用来操作元素的property的，
+    //  property和attibute是非常相似的概念.
+
+//  .css()
+//  这是个和attr非常相似的方法，用来处理元素的css
+
+//  .css(propertyName) / .css(propertyNames)
+
+//  获取元素style特定property的值
+$('#username').css('border-color','green')//改变边框的颜色
+console.log($('#username').css('border-color'))//获取边框的值
+$('#username').css({
+    "border-color":'red',
+    "height":"200"
+})//改变边框的颜色和高度
+
+
+
+// .addClass(className) 
+// .addClass(function(index,currentClass))
+// 为元素添加class，不是覆盖原class，是追加，也不会检查重复
+
+
+$('.btn4').on('click',function(){
+    $('.box').addClass('active')
+});
+$('.btn5').on('click',function(){
+    $('.box').removeClass('active')
+});
+
+
+// .removeClass([className])
+// .removeClass(function(index,class))
+// 移除元素单个/多个/所有class
+
+
+//.hasClass(className)
+//检查元素是否包含某个class，返回true/false
+$('.btn6').on('click',function(){
+    if($('.box1').hasClass('active')){
+        $('.box1').removeClass('active')
+    }else(
+        $('.box1').addClass('active')
+    )
+})
+
+
+//.toggleClass(className)
+//toggle是切换的意思，方法用于切换，switch是个bool类型值
+$('.btn7').on('click',function(){
+   $('.box2').toggleClass('active')
+})
+
+</script>
+ 
+</body>
+</html>

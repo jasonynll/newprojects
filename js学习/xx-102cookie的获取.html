@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+function setCookie(name,value,iDay)
+{
+	var oDate=new Date()
+	oDate.setDate(oDate.getDate()+iDay)
+	//document.cookie='name=value;expires=date'; 改写成字符串连接
+	document.cookie=name+'='+value+';expires='+oDate;
+}
+
+function getCookie(name)
+{
+	var arr=document.cookie.split('; ')
+	
+	for(var i=0;i<arr.length;i++)
+	{
+		var arr2=arr[i].split('=')
+		if(arr2[0]==name)
+		{
+			return arr2[1]
+		}
+	}
+	return ''
+}
+
+
+/*setCookie('uesrName','zyn',10)
+setCookie('passName','12121321341',100)*/
+
+alert(getCookie('uesrName'))
+</script>
+</head>
+
+<body>
+</body>
+</html>

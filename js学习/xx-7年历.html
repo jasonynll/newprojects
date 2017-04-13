@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+#div1{width:250px;background:#F9F; margin:0 auto;}
+ul{margin:0px; padding:0px;list-style:none;}
+li{width:50px;height:50px;background:#000;color:#FFF; float:left; margin-left:10px; margin-top:10px; margin-bottom:10px; line-height:50px; text-align:center;}
+.clear{zoom:1;}
+.clear:after{content:"";display:block; clear:both;}
+#div2{background:#0C3;}
+.active{background:#FFF; color:#F00;}
+h2{text-align:center; font-size:20px;}
+p{text-align:center; font-size:14px}
+</style>
+<script>
+window.onload =function(){
+	var oDiv = document.getElementById('div1')
+	var aLi =oDiv.getElementsByTagName('li')
+	var oTxt = document.getElementById('div2')
+	var arr=['我们去过年',
+			 '我们去串门',
+			 '我们去登记',
+			 '我们计划去旅游',
+			 '我们来过五一',
+			 '我们来过儿童节',
+			 '我们去申请签证',
+			 '我们去泰国',
+			 '我们请客吃饭',
+			 '我们去找工作',
+			 '我们去挣钱',
+			 '我们上班一个月了']
+	
+	
+	
+	for(var i=0;i<aLi.length;i++){
+		aLi[i].index=i
+		aLi[i].onmouseover =function(){
+			
+			for(var i=0;i<aLi.length;i++){
+				aLi[i].className=""
+			}
+			this.className='active'
+			oTxt.innerHTML='<h2>'+(this.index+1)+'月</h2><p>'+arr[this.index]+'</p>'
+     
+       
+		}
+		
+	} 
+}
+</script>
+</head>
+
+<body>
+<div id="div1">
+	<ul class="clear">
+    	<li class="active">一月</li>
+        <li>二月</li>
+        <li>三月</li>
+        <li>四月</li>
+        <li>五月</li>
+        <li>六月</li>
+    	<li>七月</li>
+        <li>八月</li>
+        <li>九月</li>
+        <li>十月</li>
+        <li>十一月</li>
+        <li>十二月</li>
+    </ul>    
+    <div id="div2">
+     	<h2>一月</h2>
+        <p>我们去过年</p>
+    </div>   
+        
+</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>val-attr</title>
+</head>
+<body>
+   <p id="test">这是段落中的<b>粗体</b>文本。</p>
+   <input id="test-input" type="text" placeholder="测试表单val">
+   <a id="test-a" href="http://www.jirengu.com">这是链接</a>
+   <img id='test-img' data-src="http://img1.imgtn.bdimg.com/it/u=1245538184,752165177&fm=23&gp=0.jpg" alt="">
+
+    <script src="jquery-3.2.0.min.js"></script>
+    <script>
+
+      
+    console.log( $('#test-input').val() );
+    console.log( $('#test-a').attr('href') );
+    console.log( $('#test-img').attr('data-src') );
+    $('#test-input').val('输入xxx') ;
+    $('#test-a').attr('href','http://www.baidu.com') ;
+    $('#test-img').attr('src', $('#test-img').attr('data-src')) ;
+    </script>
+</body>
+</html>

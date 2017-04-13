@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+
+<style type="text/css">
+ul,li{margin: 0;padding: 0;}
+ul{ position: relative;  z-index: 0; z-index: 0.5;}
+li {list-style: none; position: absolute; top: 20px; left: 20px; width: 60px; height: 90px; background: red;z-index: 0.5;}
+div{width: 226px; height: 126px; background:url(../img6/abg5.gif) no-repeat; position:absolute; top: 50px; left: 10px;display: none; z-index: 1;}
+</style>
+<script>
+                
+                window.onload = function(){
+
+                        var aUl =document.getElementsByTagName('ul');
+                        var aLi =document.getElementsByTagName('li');
+                        var oDiv = document.getElementById('div1');
+                        var aDiv = document.getElementsByTagName('div');
+                        var aImg = ['img1.gif','img2.gif','img3.gif','img4.gif','img5.gif','img6.gif'];
+                        var that = null;
+                                function fnt(){
+
+                                        for(var i=0;i<1;i++){
+                                                                document.body.innerHTML+= '<ul></ul>';
+                                                for(var j=0;j<2;j++){
+
+                                                        for(var k=0;k<3;k++){
+
+                                                                aUl[i].innerHTML += '<li> <div>'+ (j*3+k) +'</div></li>'
+                                                                aLi[j*3+k].style.top = 20+(j)*100+'px';
+                                                                aLi[j*3+k].style.left = 20+(k)*70+'px';
+                                                                aLi[j*3+k].style.backgroundImage = 'url('+ aImg[(j*3+k)%6] +')';
+                                                        }
+                                                }
+                                        }
+                                }
+                                fnt();
+                                for (var i=0; i<aLi.length; i++)
+                                {
+                                        aLi[i].onmouseover = function(){
+
+                                                that=this;
+                                                fn1();
+                                        }
+                                        aLi[i].onmouseout =function(){
+
+                                                        this.getElementsByTagName('div')[0].style.display = 'none';
+                                        }
+                                        function fn1(){
+
+                                                that.getElementsByTagName('div')[0].style.display = 'block';
+                                                that.getElementsByTagName('div')[0].style.zIndex = 1 ;
+                                                that.style.zIndex = 0.5 ;
+                                        }
+                                }
+                
+                        }
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

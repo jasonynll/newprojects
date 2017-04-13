@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+.red{background:red; color:#000;width:200px;border:5px solid #999;}
+.yellow{background:yellow; color:#000;width:200px;border:5px solid #999;}
+</style>
+<script>
+window.onload = function(){
+	var oBtn1 = document.getElementById('btn1');
+	var oBtn2 = document.getElementById('btn2');
+	var oBtn3 = document.getElementById('btn3');
+	var oBtn4 = document.getElementById('btn4');
+	var oP    = document.getElementById('p1');
+	var num  = 14;
+	oBtn3.onclick = function(){
+		oP.className ='red';
+		
+	}
+	oBtn4.onclick = function(){
+		oP.className ='yellow';
+		
+	}
+	oBtn2.onclick = function(){
+		if(num<24){
+			num ++;
+			oP.style.fontSize = num+'px';
+		}
+		
+		
+	}
+	
+	oBtn1.onclick = function(){
+		if(num>12){
+			num --;
+			oP.style.fontSize = num+'px';
+		}
+	}
+	
+}	
+</script>
+</head>
+
+<body>
+<input id="btn1" type="button" value="-" />
+<input id="btn2" type="button" value="+" />
+<input id="btn3" type="button" value="红" />
+<input id="btn4" type="button" value="黄" />
+<p id="p1" style="font-size:14px;">　　中午12点左右，洪濑刑侦中队民警带着潘某花指认现场。现场早已围聚了一两千名群众，他们中的大多数人，从早上8点多开始就在淇棋家的小吃店门口守候，久久不肯散去。"这样的人怎么判都不为过！太可恨了！"理智的人止于谩骂，冲动一点的已经抡起拳头准备打人。丰州派出所民警到现场维持秩序，因人员太多，不得不拉起警戒线，将人流分成两道。</p>
+</body>
+</html>

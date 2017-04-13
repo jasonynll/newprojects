@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+function D(n)
+{
+	if(n<10)
+	{
+		return '0'+n
+	}else
+	{
+		return  ''+n
+	}
+}
+window.onload = function()
+{
+	var aImg = document.getElementsByTagName('img')
+	
+	function tick(){
+		var oDate =new Date()
+		var str=D(oDate.getHours())+D(oDate.getMinutes())+D(oDate.getSeconds())
+		
+		
+		for(var i=0;i<aImg.length;i++)
+		{
+			aImg[i].src = '../imgdsq/'+str.charAt(i)+'.JPG '
+		}
+	}
+	setInterval(tick,1000)
+	tick();
+}
+</script>
+</head>
+
+<body style="font-size:200px">
+<img src="../imgdsq/0.JPG" />
+<img src="../imgdsq/0.JPG" />
+:
+<img src="../imgdsq/0.JPG" />
+<img src="../imgdsq/0.JPG" />
+:
+<img src="../imgdsq/0.JPG" />
+<img src="../imgdsq/0.JPG" />
+
+</body>
+</html>

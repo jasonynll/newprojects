@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script>
+window.onload = function(){
+	var aBtn  = document.getElementsByTagName('input');
+	document.title = 123;
+	document.body.innerHTML ='<input type="button" value="按钮"><input type="button" value="按钮"><input type="button" value="按钮">'
+	aBtn[0].onclick = function(){alert(1)};
+	aBtn[1].onclick = function(){alert(2)};
+	aBtn[2].onclick = function(){alert(3)};
+};
+</script>
+</head>
+
+<body>
+</body>
+</html>

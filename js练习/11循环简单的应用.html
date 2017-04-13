@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script>
+window.onload =function(){
+	var oUl = document.getElementById('list');
+	var aLi = document.getElementsByTagName('li');
+	var Len = aLi.length;
+	var arr = ['今天','明天','后天'];
+	
+	for (var i=0;i<Len; i++){
+		aLi[i].innerHTML = arr[i];
+		aLi[i].onclick = function(){alert(1)};
+		};
+};
+</script>
+<style>
+li{ height:30px; border-bottom:1px solid #000;}
+</style>
+</head>
+
+<body>
+<ul id="list">
+	<li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>

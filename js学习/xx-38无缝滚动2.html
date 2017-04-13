@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+body{margin:0px;}
+ul{margin:0px; padding:0px;list-style:none;}
+img{border:none;vertical-align:top;}
+#div1{width:440px; height:164px;background:red;position:relative;top:0px;left:0px;margin:100px auto; overflow:hidden;}
+#div1 ul{position:absolute;top:0px;left:0px;}
+#div1 ul li{width:110px; height:164px;float:left;}
+</style>
+<script>
+window.onload=function()
+{ 
+	var oDiv =document.getElementById('div1')
+	var oUl= oDiv.getElementsByTagName('ul')[0]
+	var aLi= oDiv.getElementsByTagName('li')
+	 oUl.innerHTML=oUl.innerHTML+oUl.innerHTML;
+	 oUl.style.width=aLi[0].offsetWidth*aLi.length+'px'
+   setInterval(function(){
+	   if(oUl.offsetLeft<-oUl.offsetWidth/2)
+	   {
+		   oUl.style.left='0'
+	   }
+	   if(oUl.offsetLeft>0)
+	   {
+		   oUl.style.left=-oUl.offsetWidth/2+'px';
+	   }
+	 oUl.style.left=oUl.offsetLeft+2+'px'
+ },30)
+}
+</script>
+</head>
+
+<body>
+<div id="div1">
+	<ul>
+    	<li><img src="../imgdsq/bj4.gif"</li>
+        <li><img src="../imgdsq/bj4-4.gif"</li>
+        <li><img src="../imgdsq/bj4-6.gif"</li>
+        <li><img src="../imgdsq/bj4-7.gif"</li>
+    </ul>
+</div>
+</body>
+</html>

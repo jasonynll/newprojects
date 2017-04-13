@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+window.onload =function()
+{
+	var oUl= document.getElementById('ul1')
+	var aFrag = document.createDocumentFragment();
+	 for(var i=0; i<1000;i++)
+	 {
+		  var aLi=document.createElement('li')
+		  aFrag.appendChild(aLi)
+	 }
+	  oUl.appendChild(aFrag)
+}
+</script>
+</head>
+
+<body>
+<ul id="ul1"></ul>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+div{height:50px;width:50px;background:red;position:absolute;top:0px; left:0px; font-size:30px;color:#FFF; line-height:50px; text-align:center;}
+</style>
+<script>
+window.onload = function(){
+	var aDiv  = document.getElementsByTagName('div');
+	for(var i=0;i<10;i++){
+		document.body.innerHTML +='<div>'+i+'</div>'
+	};
+	for(var i=0;i<aDiv.length;i++){
+		aDiv[i].style.left =10+ i*60+'px';
+	};
+};
+</script>
+</head>
+
+<body>
+</body>
+</html>

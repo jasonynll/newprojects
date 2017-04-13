@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+div{width:50px;height:50px;background:red;color:#FFF;font-size:30px;position:absolute;top:0px;left:0xp;
+text-align:center;line-height:50px;}
+</style>
+<script>
+window.onload =function()
+{
+	var aDiv = document.getElementsByTagName('div')
+	var str =''
+	var num=0
+	for(var i=0;i<100;i++)
+	{
+		str+='<div>'+(i+1)+'</div>'
+	}
+	document.body.innerHTML= str
+	for(var i=0;i<100;i++)
+	{
+		aDiv[i].style.left=i%10*60+'px'
+		if(i%10==0){
+			num++;
+		}
+		aDiv[i].style.top=(num-1)*60+'px'
+	}
+}
+</script>
+</head>
+
+<body>
+</body>
+</html>

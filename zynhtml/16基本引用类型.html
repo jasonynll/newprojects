@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script>
+	// var obj1 = {a:1, b:2};
+	// var obj2 = {a:1, b:2};
+	// console.log(obj1 == obj2);
+	// console.log(obj1 = obj2);
+	// console.log(obj1 == obj2);
+	// function getIntv(time)
+	// {
+	// 	var t = new Date();
+	// 	var t1 = new Date(time);
+	// 	var t3 = (t1.getTime()-t.getTime())/1000;
+	// 	var day = Math.abs(Math.floor(t3/3600/24));
+	// 	var hour =Math.abs(Math.floor(t3/3600%24));
+	// 	var min =Math.abs(Math.floor(t3%3600/60));
+	// 	var seconds= Math.abs(Math.floor(t3%60));
+	// 	if(t3>0)
+	// 	{
+	// 		return '距离'+time+'还有'+day+'天'+hour+'小时'+min+'分'+seconds+'秒';
+	// 	}else
+	// 	{
+
+	// 		return '距离'+time+'已过去'+day+'天'+hour+'小时'+min+'分'+seconds+'秒';
+	// 	}
+	// }
+	// console.log(getIntv("2015-12-13"));
+	// console.log(getIntv("2017-01-28"));
+// function getChasDate(time)
+// {
+// 	  var arr=["零","一","二","三","四","五","六","七","八","九","十","十一","十二","十三","十四","十五","十六","十七","十八","十九","二十","二十一","二十二","二十三","二十四","二十五","二十六","二十七","二十八","二十九","三十","三十一"];
+// 	  var time = new Date(time);
+// 	  var year = time.getFullYear()+'';	//获取年份把年份变成字符串；  
+// 	  var str = '';
+// 	  for (var i=0;i<year.length; i++)//遍历年份字符串；str=arr数组里对应的数字；
+// 	  {
+// 	  	  str += arr[year[i]];
+// 	  };
+// 	  var month = arr[time.getMonth()+1];
+// 	  var day = arr[time.getDate()];
+// 	  return  str+ '年'+ month+'月'+day+'日';	  
+// }
+
+// console.log(getChasDate('2016-12-15'));
+
+// function getLastDay(day)
+// {
+// 	var toDay = Date.now();//获取当前日期毫秒数
+// 	var oldDay = day*24*60*60*1000//获取参数天数的毫秒数；
+// 	var s = toDay-oldDay //获取差值；
+// 	var y = new Date(s);//把差值转化日期；
+// 	return y.getFullYear()+'-'+ (y.getMonth()+1)+'-'+ y.getDay();
+// }
+// console.log(getLastDay(7));
+// console.log(getLastDay(13));
+
+
+// var Runtime = (function()
+// {
+// 	var st; var et; var dt;
+// 	var obj = {
+// 		start:function(){
+// 			st =Date.now();
+// 		},
+// 		end:function(){
+// 			et=Date.now();
+// 		},
+// 		get:function(){
+// 			return dt = et -st ;
+// 		}
+// 	};
+// 	return obj;
+// }());
+// Runtime.start();
+// for(var i=0;i<10000;i++)
+// {
+// 	console.log(1);
+// }
+// Runtime.end();
+// console.log(Runtime.get());
+
+
+
+// function getNumber(n){
+// 	if(n<= 0)
+// 	{
+// 		return 0;
+// 	}else if (n===1) {
+// 		return 1;
+// 	}else if (n===2) {
+// 		return 2;
+// 	}else
+// 	{
+// 		return getNumber(n-1)+ getNumber(n-2);
+// 	}    
+// };
+// console.log(getNumber(20));
+
+
+// var obj1 = {
+// 	name:'zyn',
+// 	age: 30,
+// 	sex:'male',
+// 	bool:true,
+// 	arr:[1,2,3,4],
+// 	null:null,
+// 	und:undefined,
+// 	json:{
+
+// 		    name:'jirengu',
+// 		    agr:2;
+// 		    arr:[5,6,7,8],
+// 	},
+// 	fn:function(){return:'hello'}
+// };//定义一个json对象obj1
+
+// var JSONobj1= JSON.stringify(obj1,copy,4);
+// //使用JSON.stringify方法将js对象obj1转换成JSON字符串JSONobj1
+// function copy(key,value) {//定义函数copy
+//   if(typeof(value) === 'function') {
+//     return (Function.prototype.toString.call(value));
+//     /*当值类型为函数时，将函数转换为字符串显示。这是由于JSON规范的限制如果一个对象存在属性值为函数的属性，则在使用JSON.stringify()方法对该对象进行序列化时.这个属性将不会被遍历到。*/
+//   }
+//    if(value === undefined) {
+//     return 'undefined';
+    /*当值为undefined时，输出字符串'undefined',这是由于如果属性值是undefined的时候，即表示属性值还没有 被赋值，JSON.stringify是不会显示这个属性值，但是null表示变量是被赋值的，表示一个空值，执行 JSON.stringify的时候会显示。*/
+//   }
+//   return value;
+
+// }
+// var obj2 = JSON.parse(JSONobj1);
+// obj1.name = 'aaa';
+// obj1.arr = [1,1,1,1];
+// obj1.innerobj = {
+//   name : 'aaa',
+//   age : 20,
+//   arr : [2,2,2,2]
+// };//对obj1各属性进行重新赋值，观察obj1、obj2的打印结果
+// console.log(obj1);
+/*[object Object] {
+  age: 18,
+  arr: [1, 1, 1, 1],
+  bool: true,
+  func: function (){return 'hello';},
+  innerobj: [object Object] {
+    age: 20,
+    arr: [2, 2, 2, 2],
+    name: "aaa"
+  },
+  name: "aaa",
+  null: null,
+  sex: "male",
+  udf: undefined
+}*/
+//obj1的打印结果已经发生变化。
+//console.log(obj2);
+/*[object Object] {
+  age: 18,
+  arr: [1, 2, 3, 4],
+  bool: true,
+  func: "function (){return 'hello';}",
+  innerobj: [object Object] {
+    age: 81,
+    arr: [4, 3, 2, 1],
+    name: "yangli"
+  },
+  name: "liyang",
+  null: null,
+  sex: "male",
+  udf: "undefined"
+}*/
+//可以看到，obj2并没有受到对obj1重新赋值的影响，和obj1原来的值是相同的。
+
+//第一种方法：
+//  var me = {
+//     "name": "oxc",
+//     "age": 23,
+//     "hobby": {
+//             "food": "meat",
+//         "sport": "bicycle",
+//         "number": 24
+//     }
+// };
+// function dc(obj1){
+//         var obj2 = JSON.parse(JSON.stringify(obj1));
+//           /* 先把obj1指向的对象转化为字符串，此时obj1指向的对象不变，在把obj1字符串转化为一个对象，这个对象和obj1指向的对象不是同一个 */
+//         return obj2;
+// } 
+// //第二种方法：
+// var me = {
+//     "name": "oxc",
+//     "age": 23,
+//     "hobby": {
+//         "food": "meat",
+//         "sport": "bicycle",
+//         "number": 24
+//     }
+// }
+// function dc(obj1){
+//     var obj2 = {};
+//     for(var key in obj1){
+//         if(typeof obj1[key] == 'object'){
+//             obj2[key] = dc(obj1[key])
+//         }else{
+//             obj2[key] = obj1[key]
+//         }   
+//     };
+//     return obj2;
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// var a = 1;
+// var b = a;
+// a = 2;
+// console.log(b); //1
+
+// var c = "hello",
+//     d = c;
+// c += " world";
+// console.log(d); 
+
+// var obj1 = {name: 'kevin', sex: 'male'};
+//     obj2 = obj1;
+// obj1.name = 'xiaoming';
+// console.log(obj2);
+
+// var arr1 = [1,2,3],
+//     arr2 = arr1;
+// arr1.push(4);
+// console.log(arr2);
+
+//对于基本类型，函数体复制一份新的变量
+// function add(num){ //var num=count;
+//     num += 10;
+//     return num;
+// }
+// var count = 20;
+// var result = add(count); //传递的是外面的count，函数内部实际上创建一个新变量，把count的值负责进去
+// console.log(count);
+// console.log(result);
+
+// //对于引用类型，函数体里的变量是传递的参数的另外一个名字
+// function setName(obj){
+//     obj.name = 'kevin';
+//     return obj;
+// }             
+// var persion = {name: 'xiaoming', age: 100};
+// var persion2 = setName(persion);
+// console.log(persion);
+// console.log(persion2);
+
+// function setAge(obj){
+//     obj.age = 18;
+//     obj = {};
+//     obj.age = 20;
+//     return obj;
+// }
+// var persion = {name: 'xiaoming', age: 100};
+// var p2 = setAge(persion);
+// console.log(persion);
+// console.log(p2);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</head>
+<body>
+    
+</body>
+</html>

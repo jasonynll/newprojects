@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+	ul{
+		padding:0px;
+		margin: 0px;
+	}
+	li{
+		list-style: none;
+	}
+	
+	
+	.wrap{
+		border:1px solid;
+		width: 603px;
+	}
+	.ct>li{
+		float:left;
+		padding:10px 0;
+		text-align: center;
+		width: 200px;
+		border-right: 1px solid;
+		border-bottom: 1px solid;
+	}
+	.ct>li:last-child{
+		border-right: none;
+	}
+	.clear{
+		display: block;
+		content:"";
+		clear: both;
+
+	}
+	.panel
+	{
+		display:none ;
+		height: 180px;
+		padding:20px;
+	}
+	.active{
+		display: block;
+		
+	}
+	.ct>.active{
+		background: #ccc;
+	}
+</style>
+</head>
+<body>
+    <div class="wrap">
+    	<ul class="ct clear">
+    		<li class="active">tab1</li>
+    		<li>tab2</li>
+    		<li>tab3</li>
+    	</ul>
+    	<div class="panel active">内容1</div>
+    	<div class="panel">内容2</div>
+    	<div class="panel">内容3</div>
+    </div>
+    <div class="wrap">
+    	<ul class="ct clear">
+    		<li class="active">tab1</li>
+    		<li>tab2</li>
+    		<li>tab3</li>
+    	</ul>
+    	<div class="panel active">内容1</div>
+    	<div class="panel">内容2</div>
+    	<div class="panel">内容3</div>
+    </div>
+    <script src="jquery-3.2.0.min.js"></script>
+    <script>
+    $('.ct>li').on('click',function(){
+       var $this =$(this)
+        var index = $(this).index();//被点中的下标 .index()jquery方法；
+        console.log(index);
+        $this.siblings().removeClass('active');
+       $this.addClass('active')
+        // $('.ct>li').removeClass('active')
+        // $('.ct>li').eq(index).addClass('active')
+        
+
+      $this.parents('.wrap').find('.panel').removeClass('active')
+      $this.parents('.wrap').find('.panel').eq(index).addClass('active')
+
+        // $('.panel').removeClass('active')
+        // $('.panel').eq(index).addClass('active');
+    })
+
+
+    </script>
+</body>
+</html>

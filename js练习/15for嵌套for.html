@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script>
+window.onload =function(){
+	var oUl =document.getElementById('list');
+	var aUl =oUl.getElementsByTagName('ul');
+	var aLi =null;
+	for(var i=0;i<aUl.length;i++){
+		aLi = aUl[i].getElementsByTagName('li');
+		for(var j=0;j<aLi.length;j++){
+			aLi[j].style.border ='1px solid red';
+		};
+	};
+};
+</script>
+</head>
+
+<body>
+<ul id="list">
+	<li>
+    	<h2>我的好友</h2>
+    	<ul>
+        	<li>张亚楠</li>
+            <li>张楠</li>
+            <li>亚楠</li>
+        </ul>
+    </li>
+    <li>
+    	<h2>我的亲人</h2>
+        <ul>
+        	<li>张亚楠</li>
+            <li>张楠</li>
+            <li>亚楠</li>
+        </ul>
+    </li>
+    <li>
+    	<h2>我自己</h2>
+        <ul>
+        	<li>mir张亚楠~</li>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>

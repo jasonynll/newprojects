@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>瀑布流布局</title>
+    <style>
+        .content{
+            position:relative;
+        }
+        .item{
+            position: absolute;
+            width:200px;
+            margin: 10px 0px 0px 10px;
+            transition:all 1s; /*渐变效果*/
+        }
+        .h1{
+            height:200px;
+            background:#f4b300;
+        }
+        .h2{
+            height: 300px;
+            background: #691888;
+        }
+        .h3{
+            height: 400px;
+            background: #006ac1;
+        }
+    </style> 
+</head>
+<body>
+    <div class="content">
+        <div class="item h1">1</div>
+        <div class="item h3">2</div>
+        <div class="item h2">3</div>
+        <div class="item h1">4</div>
+        <div class="item h1">5</div>
+        <div class="item h3">6</div>
+        <div class="item h3">7</div>
+        <div class="item h2">8</div>
+        <div class="item h1">9</div>
+        <div class="item h3">10</div>
+        <div class="item h3">11</div>
+        <div class="item h3">12</div>
+        <div class="item h2">13</div>
+        <div class="item h2">14</div>
+    </div>
+    
+</body> 
+<script src="jquery-3.2.0.min.js"></script>
+<script>
+        //     waterFull();//开始先布局；
+        //     $(window).resize(function(){//当窗口改变大小时再重现布局
+        //         waterFull()
+        //     })
+        //  function waterFull(){
+        //         var nodeWidth =$('.item').width();//元素宽度
+        //         var colLength =parseInt($('.content').width()/nodeWidth)//一排放多少个（取整）
+        //         var itemArr = [];
+        //         for(var i=0; i<colLength;i++){//初始化
+        //         itemArr[i]=0;
+        //     }
+            
+        //     $('.item').each(function(){
+        //         var minValue = Math.min.apply(null,itemArr) //获取数组最小值es5
+        //         var minIndex = itemArr.indexOf(minValue)//获取最小值的下标；
+
+        //         $(this).css({
+        //             top:itemArr[minIndex],
+        //             left:$(this).outerWidth(true)*minIndex
+
+        //         })
+        //         itemArr[minIndex] += $(this).outerHeight(true);
+        //     })
+    var WaterFull=(function(){
+      function init(){
+             waterFull()
+            $(window).resize(function(){
+              waterFull()
+           })
+
+         }
+    function waterFull(){
+                var nodeWidth =$('.item').width();//元素宽度
+                var colLength =parseInt($('.content').width()/nodeWidth)//一排放多少个（取整）
+                var itemArr = [];
+                for(var i=0; i<colLength;i++){//初始化
+                itemArr[i]=0;
+            }
+            
+            $('.item').each(function(){
+                var minValue = Math.min.apply(null,itemArr) //获取数组最小值es5
+                var minIndex = itemArr.indexOf(minValue)//获取最小值的下标；
+
+                $(this).css({
+                    top:itemArr[minIndex],
+                    left:$(this).outerWidth(true)*minIndex
+
+                })
+                itemArr[minIndex] += $(this).outerHeight(true);
+            })
+
+     }   
+     return {
+              init:init
+          }
+     })()
+     
+     WaterFull.init();
+
+    
+
+     
+   
+    
+</script>   
+</html>

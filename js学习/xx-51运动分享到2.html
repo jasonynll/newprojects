@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+#div1{width:200px;height:200px;background:red;position:absolute;left:-200px;top:0px;}
+#div1 span{width:20px; height:60px; background:yellow;position:absolute;top:70px; left:200px; line-height:20px; color:black;}
+</style>
+<script>
+window.onload =function()
+{
+	var oDiv= document.getElementById('div1')
+	var oSpan= document.getElementById('span1')
+	var timer=null;
+	oDiv.onmouseover =function(){
+		 Move(10,0);
+	}
+	oDiv.onmouseout =function(){
+		 Move(-10,-200);
+	}
+  function Move(speed,iTarget)
+  {
+	var oDiv= document.getElementById('div1')
+	clearInterval(timer)
+	timer= setInterval(function()
+	 {
+		 if(oDiv.offsetLeft==iTarget)
+		 {
+			 clearInterval(timer)
+		 }else{
+			 oDiv.style.left=oDiv.offsetLeft+speed+'px'
+		 }
+	 
+	 },30)
+	 
+  }
+ 
+}
+</script>
+</head>
+
+<body>
+<div id="div1">
+	<span id="span1">分享到</span>
+</div>
+</body>
+</html>

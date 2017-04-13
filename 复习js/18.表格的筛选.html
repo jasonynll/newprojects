@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+window.onload = function()
+{
+	var oTab = document.getElementById('tab1')
+	var oBtn = document.getElementById('btn')
+	var oName = document.getElementById('name')
+	
+   
+  
+	   oBtn.onclick = function()
+	   {
+		 for(var i=0;i<oTab.tBodies[0].rows.length;i++)
+		 {    
+		  
+		    var sTab=oTab.tBodies[0].rows[i].cells[1].innerHTML.toLowerCase()
+			var sName=oName.value.toLowerCase()
+			
+			var arr = sName.split(' ')
+			
+			oTab.tBodies[0].rows[i].style.background =''
+			
+			for(var j=0;j<arr.length;j++)
+			{
+			
+			 
+			   if(sTab.search(arr[j])!=-1)
+			   {
+				   oTab.tBodies[0].rows[i].style.background ='yellow'
+			   }
+			}
+		 }
+	   }
+  
+	
+	/*搜索：字符串，大小写，模糊筛选，关键词，
+	筛选：display:none;*/
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
+</script>
+</head>
+
+<body>
+姓名：<input id="name" type="text" />
+
+<input type="button" id="btn"  value="搜索"/>
+<table id="tab1" border="1" width="500">
+	<thead>
+    	<td>ID</td>
+        <td>姓名</td>
+        <td>年龄</td>
+        <td>操作</td>
+    </thead>
+    <tbody>
+    	<tr>
+        	<td>1</td>
+            <td>zyn</td>
+            <td>22</td>
+            <td></td>
+        </tr>
+        <tr>
+        	<td>2</td>
+            <td>jl</td>
+            <td>23</td>
+            <td></td>
+        </tr>
+        <tr>
+        	<td>3</td>
+            <td>zyg</td>
+            <td>25</td>
+            <td></td>
+        </tr>
+        <tr>
+        	<td>4</td>
+            <td>ztb</td>
+            <td>26</td>
+            <td></td>
+        </tr>
+        <tr>
+        	<td>5</td>
+            <td>zsy</td>
+            <td>28</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>

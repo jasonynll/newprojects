@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #div1{ width: 260px; height: 195px; border: 1px solid red; margin: 200px auto;}
+        #div1 input{ margin: 1px 0 0 1px;}
+        #list{ list-style-type: none; position: relative;}
+        #list li{ height: 40px; width: 40px; margin-left: 10px; position: absolute; top:0; left: 0; border: 1px solid #313131; font-size: 20px; line-height: 40px;
+            text-align: center; color: black; background: red;}
+    </style>
+    <script>
+        window.onload = function() {
+            var oBtn = document.getElementById("btn1");
+            var oUl = document.getElementById("list");
+            var aLi = oUl.getElementsByTagName("li");
+            var onOff = true;
+            oBtn.onclick = function () {
+                if( onOff){
+                    for (var i = 0; i < 5; i++) {
+                        oUl.innerHTML+='<li>'+i+'</li>'
+                    }
+                    for( var i=0;i<aLi.length;i++){
+                        if( i%4==0){
+                            aLi[i].style.left=i*50+"px";
+                            aLi[i].style.top=0+"px";
+                        }else if( i%2==1){
+                            aLi[i].style.left=i*50+"px";
+                            aLi[i].style.top=50+"px";
+                        }else if( i%2==0){
+                            aLi[i].style.left=i*50+"px";
+                            aLi[i].style.top=i*50+"px";
+                        }
+                    }
+                    onOff =false;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="div1">
+        <input  id="btn1" type="button" value="自动生成V字型"/>
+        <ul id="list"></ul>
+    </div>
+</body>
+</html>

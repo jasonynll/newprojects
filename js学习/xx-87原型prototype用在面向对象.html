@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+function Person(name,phone) 
+{     
+	  this.name=name
+	  this.phone=phone  
+}
+Person.prototype.showName=function()
+{
+	 alert('我的名字是：'+this.name)
+}
+Person.prototype.showPhone= function()
+{
+	 alert('我的电话是：'+this.phone)
+}
+
+var obj1=new Person('张亚楠','15211086658')
+var obj2=new Person('姜琳','13426032027')
+
+obj1.showName()
+obj2.showName()
+alert(obj1.showName==obj2.showName)
+
+</script>
+</head>
+
+<body>
+</body>
+</html>

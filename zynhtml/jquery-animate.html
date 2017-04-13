@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>animate</title>
+    <style>
+        div{
+            width:100px;
+            height: 100px;
+            background:red;
+            position:relative;
+            top:0px;
+            left: 0px;
+        }
+    </style>
+</head>
+<body>
+  
+  <input type="button" value="开始" id="input">
+  <input type="button" value="重置" id="input2">
+  <div id="ct"></div>
+
+    <script src="jquery-3.2.0.min.js"></script>
+    
+    <script>
+
+        var clock = true;
+        $('#input').on('click',function(){
+            if (!clock) {
+                return;
+            }
+            clock = false;
+          
+            $('#ct').animate({width:'200',height:'200'},2000)
+            $('#ct').animate({opacity:'0'},2000)
+                    .animate({opacity:'1'},3000)
+                    .animate({top:'0',left:'50%'},4000)
+            $('#ct').animate({top:'0',left:'0'},3000) 
+            $('#ct').animate({width:'100',height:'100'},2000,function(){
+                clock =true;
+            })            
+
+        });
+
+        $('#input2').on('click',function(){
+
+            $('#ct').finish();
+        })
+
+       
+    </script>
+</body>
+</html>

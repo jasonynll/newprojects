@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+window.onload =function()
+{
+	var oUl= document.getElementById('ul1')
+	//ie6-8 不会计算文本节点
+	//alert(oUl.childNodes.length)
+	for(var i=0;i<oUl.childNodes.length;i++)
+	{
+		
+		//oUl.childNodes[i].style.background='red'
+		//alert(oUl.childNodes[i].nodeType)
+		//nodeType判断节点的类型 =3 为文本节点 =1为元素节点
+		if(oUl.childNodes[i].nodeType==1)
+		{
+			oUl.childNodes[i].style.background='red'
+		}
+	}
+}
+</script>
+</head>
+
+<body>
+<ul id="ul1">
+	<li></li>
+    <li></li>
+</ul>
+sdadsada <!--文本节点-->
+<spand>dasda </spand> <!-- 元素节点-->
+</body>
+</html>

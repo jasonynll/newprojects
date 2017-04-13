@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+window.onload =function()
+{
+	 var oUl= document.getElementById('ul1')
+	 var aA = document.getElementsByTagName('a')
+	 for(var i=0;i<aA.length;i++)
+	 {
+		 aA[i].onclick =function()
+		{
+			oUl.removeChild(this.parentNode)
+		}
+	 }
+}
+</script>
+</head>
+
+<body>
+<ul id="ul1">
+	<li>1213123<a href="javascript:;">删除</a></li>
+    <li>1123<a href="javascript:;">删除</a></li>
+    <li>123<a href="javascript:;">删除</a></li>
+    <li>12打算的13123<a href="javascript:;">删除</a></li>
+    <li>121312 大3<a href="javascript:;">删除</a></li>
+    <li>121312打算3<a href="javascript:;">删除</a></li>
+</ul>
+</body>
+</html>

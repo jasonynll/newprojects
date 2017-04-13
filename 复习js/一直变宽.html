@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+#div1{width:200px; height:200px; background:#000;}
+</style>
+<script>
+window.onload =function()
+{
+	var oDiv = document.getElementById('div1')
+	var oBtn = document.getElementById('btn')
+	
+	oBtn.onclick = function()
+	{
+		var speed=100;
+		
+		oDiv.style.width = oDiv.offsetWidth+speed+'px'
+	}
+}
+</script>
+</head>
+
+<body>
+<input id="btn" type="button" value="变宽" />
+<div id="div1"></div>
+</body>
+</html>

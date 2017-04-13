@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+function toDou(n)
+{
+	if(n<10)
+	{
+		return '0'+n
+	}else
+	{
+		return ''+n
+	}
+}
+window.onload =function()
+{
+	var aImg= document.getElementsByTagName('img')
+	//var str='145030'
+	function tick(){
+		var oDate=new Date()
+		var str= toDou(oDate.getHours())+toDou(oDate.getMinutes())+toDou(oDate.getSeconds())
+		for(var i=0;i<aImg.length;i++){
+		aImg[i].src='../imgdsq/'+str.charAt(i)+'.JPG'// str[i]不兼容 用 charAt()
+		}
+	}
+	setInterval(tick,1000)
+	tick();
+}
+</script>
+</head>
+
+<body style="background:#000 ;color:#FFF ;font-size:250px; ">
+<img src="../imgdsq/0.JPG"/>
+<img src="../imgdsq/0.JPG"/>
+:
+<img src="../imgdsq/0.JPG"/>
+<img src="../imgdsq/0.JPG"/>
+:
+<img src="../imgdsq/0.JPG"/>
+<img src="../imgdsq/0.JPG"/>
+
+</body>
+</html>

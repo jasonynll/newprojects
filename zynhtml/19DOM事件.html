@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>DOM</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    <div id="div1" class="item"><p class="item"><img name="img">我是一个DIV</p></div>  
+  <ul id="ul1">
+  	<li class="list">1</li>
+  	<li class="list">2</li>
+  	<li class="list">3</li>
+  	<li class="list">4</li>
+
+  </ul>
+
+<script>
+var Div1 = document.getElementById('div1');
+var Div2 = document.getElementsByTagName('li');
+var Div3 = document.querySelector('#div1');
+var Div4 = document.querySelectorAll('.item')
+var img =  document.getElementsByName('img'); 
+var Ul = document.querySelector('#ul1');
+
+
+
+console.log(Div1);//<div id="div1" class="item"><p class="item"><img name="img">我是一个DIV</p></div>
+console.log(Div2);//[li.list, li.list, li.list, li.list]
+console.log(Div3);//<div id="div1" class="item"><p class="item"><img name="img">我是一个DIV</p></div>
+console.log(Div4);//[div#div1.item, p.item]
+console.log(img);//[img]
+console.log(Div2[1].nextSibling);//#text
+console.log(Div2[1].previousSibling);//#text
+console.log(Ul.childNodes);//NodeList[9]0: text1: li.list2: text3: li.list4: text5: li.list6: text7: li.list8: textlength: 9__proto__: NodeList
+19DOM事件.html:39 #text
+console.log(Ul.firstChild);//#text
+console.log(Ul.lastChild);//#text
+console.log(Div2[0].parentNode);//<ul id="ul1"><li class="list">1</li><li class="list">2</li><li class="list">3</li><li class="list">4</li></ul>
+console.log(Div2[0].parentElement);//ul id="ul1"><li class="list">1</li><li class="list">2</li><li class="list">3</li><li class="list">4</li></ul>
+
+
+
+</script>
+</body>
+</html>

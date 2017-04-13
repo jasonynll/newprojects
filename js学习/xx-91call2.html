@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+ function show(a,b){
+	// alert('this是：'+this+'\na是：'+a+'\nb是：'+b);
+	alert('this是：'+this+'\n a是：'+a+'\n b是：'+b+'')
+}
+//show(5,12)
+show.call('abc',5,12)
+</script>
+</head>
+
+<body>
+</body>
+</html>

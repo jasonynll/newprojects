@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+function Person(name,phone)  //构造函数
+{
+      var obj=new Object();
+	  obj.name=name
+	  obj.phone=phone
+	  
+	  obj.showName= function()
+	  {
+		  alert('我的名字是：'+this.name)
+	  }
+	  obj.showPhone=function()
+	  {
+		  alert('我的电话是：'+this.phone)
+	  }
+	  
+	  return obj;
+}
+
+var obj1=Person('张亚楠','15211086658')
+
+obj1.showName()
+obj1.showPhone() 
+
+var obj2=Person('姜琳','13426032027')
+obj2.showName()
+obj2.showPhone() 
+</script>
+</head>
+
+<body>
+</body>
+</html>

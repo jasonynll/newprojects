@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jquery-ajax</title>
+</head>
+
+<body>
+
+    <p id="target">这里是数据</P>
+    <button class="load-more">加载更多</button>
+    <script src="jquery-3.2.0.min.js"></script>
+    <script>
+        var btn = document.querySelector('.load-more');
+        btn.addEventListener('click', function () {
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('get', '/getInfo', true)
+            xhr.send();
+            xhr.onreadystatechange = function () {
+                if (xhr.status === 200 && xhr.readyState === 4) {
+                    console.log(xhr.responseText)
+                    document.querySelector('#target').innerText =xhr.responseText;
+                }
+
+            }
+        })
+    </script>
+    
+    <script>
+        $('.load-more').on('click',function(){
+            $.ajax({
+                url:'/getInfo',
+                type:'get',
+                data:{
+                    username:'zyn'
+
+                },
+                dataType:'text',
+                success:function(ret){
+                    console.log('ajax....');
+                    console.log(ret);
+                },
+                error:function(){
+                    console.log('error')
+                },
+                complete:function(){
+                    console.log('over')
+                }
+            })
+
+
+
+ $.ajax({
+                url:'/getInfo',
+                type:'get',
+                data:{
+                    username:'zyn'
+
+                },
+                dataType:'text',
+             
+            }).done(function(ret){
+                console.log('done...')
+                console.log(ret)
+
+            }).fail(function(){
+                console.log('done error')
+
+            }).always(function(){
+                console.log('haha')
+            })
+
+$.get('/getInfo',{username:'zyn'}).done(function(ret){
+    console.log('get...done...')
+    console.log(ret)
+
+}).fail(function(){})
+
+        })
+
+
+        
+    </script>
+</body>
+
+</html>

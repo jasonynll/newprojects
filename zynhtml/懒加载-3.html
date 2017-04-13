@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>懒加载2</title>
+    <style>
+         body{
+            font: 20px/1.5 ;
+            background: #FF9279;
+            padding: 30px;
+            height: 2500px;
+        }
+        .p1{
+            position: absolute;
+            top: 1500px;
+            left: 40%;
+            padding: 50px;
+            border: 2px solid #FF0500;
+            background: #0096CC;
+        }      
+
+    </style>
+</head>
+<body>
+    <p class="p1">hello</P>
+    <script src="jquery-3.2.0.min.js"></script>
+    <script>
+        
+        $(window).on('scroll',function(){
+            isCheck($('.p1'))
+        })
+         
+         function isShow($node){
+              var windowHeight = $(window).height(),
+                  scrollTop    = $(window).scrollTop(),
+                  offsetTop    = $node.offset().top,
+                  nodeHeight   = $node.outerHeight();
+                  if(windowHeight+scrollTop>offsetTop && scrollTop <offsetTop +nodeHeight){
+                      return true
+
+                  }else{
+                      return false;
+                  }
+         }
+
+         function isCheck($node){
+             if($node.not('.load').length===1 && isShow($node)){
+                 console.log(true)
+                 $node.addClass('load')
+             }else{
+                 return;
+             }
+         }
+    </script>
+</body>
+</html>

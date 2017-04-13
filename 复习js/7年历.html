@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+ul{padding:0px; margin:0px;}
+#div1{width:480px; background:#F9F; margin:0 auto; height:580px}
+#div1 li{width:100px; background:#000;height:100px; color:#FFF; line-height:50px;
+list-style:none; margin:10px 10px; float:left;  text-align:center;}
+.clear{zoom:1}
+.clear:after{content:"";display:block;clear:both;}
+#div2{ width:280px; height:200px; border:1px solid black; margin-left:100px; background:#FFF; }
+#div1 .active{ background:red; color:black;}
+#div2 h2{ text-align:center;}
+#div2 p{ text-align:center; font-size:16px; color:#66F; font-weight:bold;}
+</style>
+<script>
+window.onload =function()
+{
+	
+	var arr=[
+	          '出去玩',
+			  '放风筝',
+			  '啦啦 ',
+			  '硕大的 ',
+			  '打死第三代 ',
+			  '打的萨达萨达',
+			  '打死打死的啊',
+			  '的按时打算的爱的',
+			  ' 第三代按时打萨达',
+			  '打死打死打死 ',
+			  '打死爱的阿萨德啊'
+	        ]
+	var oDiv1 =  document.getElementById('div1')
+	var aLi = oDiv1.getElementsByTagName('li')
+	var aDiv2 = oDiv1.getElementsByTagName('div')[0]
+	
+	for(var i=0;i<aLi.length;i++)
+	
+	{
+		aLi[i].index=i
+		aLi[i].onmouseover =function()
+		{
+			for(var i=0;i<aLi.length;i++)
+			{
+				aLi[i].className=''
+			}
+			this.className='active'
+			aDiv2.innerHTML='<h2>'+(this.index+1)+'月活动</h2><p>'+arr[this.index]+'</P>'
+		}
+	}
+}
+</script>
+</head>
+
+<body>
+<div id="div1">
+	<ul class="clear">
+    	<li><h2>1月<h2></li>
+        <li><h2>2月<h2></li>
+        <li><h2>3月<h2></li>
+        <li><h2>4月<h2></li>
+        <li><h2>5月<h2></li>
+        <li><h2>6月<h2></li>
+        <li><h2>7月<h2></li>
+        <li><h2>8月<h2></li>
+        <li><h2>9月<h2></li>
+        <li><h2>10月<h2></li>
+        <li><h2>11月<h2></li>
+        <li><h2>12月<h2></li>
+    </ul>
+    <div id="div2">
+    	<h2></h2>
+        <p></p>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<script>
+	// function getMin()
+	// {
+	// 	var i=0;
+	// 	var start =Date.now();
+	// 	var clock = setTimeout(function(){
+	// 		i++;
+	// 		if(i===1000)
+	// 		{
+	// 			clearTimeout(clock);
+	// 			var end = Date.now();
+	// 			console.log((end-start)/i);
+	// 		}
+ //         clock =setTimeout(arguments.callee,0)
+	// 	},0)
+	// }
+
+
+
+
+
+	// function f1()
+	// {
+	// 	var n=999;
+	// 	function f2()
+	// 	{
+	// 		console.log(n);
+	// 	}
+	// };
+
+	// // //函数f2就被包括在函数f1内部，这时f1内部的所有局部变量，对f2都是可见的。但是反过来就不行，f2内部的局部变量，对f1就是不可见的。这就是Javascript语言特有的"链式作用域"结构（chain scope），子对象会一级一级地向上寻找所有父对象的变量。所以，父对象的所有变量，对子对象都是可见的，反之则不成立。
+	// //既然f2可以读取f1中的局部变量，那么只要把f2作为返回值，就可以在f1的外面读取到f1内部的变量；
+	// function f1()
+	// {
+	// 	var n=999;
+	// 	function f2(){
+	// 		console.log(n)
+	// 	}
+	// 	return f2;
+	// }
+	// var result =f1();
+	// result();
+
+
+
+// function f1()
+// {
+// 	var n = 999;
+// 	nAdd = function(){n+=1};
+
+// 	function f2()
+// 	{
+// 		console.log(n);
+// 	}
+// 	return f2;
+// };
+
+// var result=f1();
+
+// result();//999;
+// nAdd();
+// result();//1000;
+//在这段代码中，result实际上就是闭包f2函数。它一共运行了两次，第一次的值是999，第二次的值是1000。这证明了，函数f1中的局部变量n一直保存在内存中，并没有在f1调用后被自动清除。
+//原因就在于f1是f2的父函数，而f2被赋给了一个全局变量，这导致f2始终在内存中，而f2的存在依赖于f1，因此f1也始终在内存中，不会在调用结束后，被垃圾回收机制（garbage collection）回收。
+//这段代码中另一个值得注意的地方，就是"nAdd=function(){n+=1}"这一行，首先在nAdd前面没有使用var关键字，因此nAdd是一个全局变量，而不是局部变量。其次，nAdd的值是一个匿名函数（anonymous function），而这个匿名函数本身也是一个闭包，所以nAdd相当于是一个setter，可以在函数外部对函数内部的局部变量进行操作。
+
+
+
+// 　var name = "The Window";
+// 　　var object = {
+// 　　　　name : "My Object",
+// 　　　　getNameFunc : function(){
+// 　　　　　　return function(){
+// 　　　　　　　　return this.name;
+// 　　　　　　};
+// 　　　　}
+// 　　};
+// 　　console.log(object.getNameFunc()());
+
+//在闭包中使用this对象可能会导致一些问题。因为匿名函数的执行具有全局性，因此其this对象通常指向win
+
+// 　var name = "The Window";
+// 　　var object = {
+// 　　　　name : "My Object",
+// 　　　　getNameFunc : function(){
+// 　　　　　　var that = this;//把外部作用域中的this对象保存在一个闭包能够访问的变量里面，就可以让闭包访问该对象了
+// 　　　　　　return function(){
+// 　　　　　　　　return that.name;
+// 　　　　　　};
+// 　　　　}
+// 　　};
+// 　　console.log(object.getNameFunc()());
+//
+
+
+
+// function Circle(r) {  
+//       this.r = r;  
+// }  
+// Circle.PI = 3.14159;  
+// Circle.prototype.area = function() {  
+//   return Circle.PI * this.r * this.r;  
+// }  
+  
+// var c = new Circle(1.0);     
+// console.log(c.area());
+
+
+// var datamodel = {
+// 	table:[],
+// 	tree:{}
+// };
+// (function(dm){
+// 	for(var i=0;i<dm.table.rows;i++)
+// 	{
+// 		var row= dm.table.row[i];
+// 		for(var j=0;j<row.cells;i++)
+// 		{
+// 			drawCell(i,j);
+// 		}
+// 	}
+
+// })(datamodel);
+//我们创建了一个匿名的函数，并立即执行它，由于外部无法引用它内部的变量，
+//因此在执行完后很快就会被释放，关键是这种机制不会污染全局对象。
+
+
+
+
+// 闭包是一个比较抽象的概念,尤其是对js新手来说.书上的解释实在是比较晦涩,对我来说也是一样.
+
+// 　　但是他也是js能力提升中无法绕过的一环,几乎每次面试必问的问题,因为在回答的时候.你的答案的深度,对术语的理解以及js内部解释器的运作方式的描述,都是可以看出你js实际水平的.即使你没答对,也能让考官对你的水平有个评估.那么我先来说说我对js中的闭包的理解.
+
+// 　　闭包是很多语言都具备的特性,在js中,闭包主要涉及到js的几个其他的特性:作用域链,垃圾(内存)回收机制,函数嵌套,等等.
+
+// 　　在理解闭包以前.最好能先理解一下作用域链的含义,简单来说,作用域链就是函数在定义的时候创建的,用于寻找使用到的变量的值的一个索引,而他内部的规则是,把函数自身的本地变量放在最前面,把自身的父级函数中的变量放在其次,把再高一级函数中的变量放在更后面,以此类推直至全局对象为止.当函数中需要查询一个变量的值的时候,js解释器会去作用域链去查找,从最前面的本地变量中先找,如果没有找到对应的变量,则到下一级的链上找,一旦找到了变量,则不再继续.如果找到最后也没找到需要的变量,则解释器返回undefined.
+
+// 　　了解了作用域链,我们再来看看js的内存回收机制,一般来说,一个函数在执行开始的时候,会给其中定义的变量划分内存空间保存,以备后面的语句所用,等到函数执行完毕返回了,这些变量就被认为是无用的了.对应的内存空间也就被回收了.下次再执行此函数的时候,所有的变量又回到最初的状态,重新赋值使用.但是如果这个函数内部又嵌套了另一个函数,而这个函数是有可能在外部被调用到的.并且这个内部函数又使用了外部函数的某些变量的话.这种内存回收机制就会出现问题.如果在外部函数返回后,又直接调用了内部函数,那么内部函数就无法读取到他所需要的外部函数中变量的值了.所以js解释器在遇到函数定义的时候,会自动把函数和他可能使用的变量(包括本地变量和父级和祖先级函数的变量(自由变量))一起保存起来.也就是构建一个闭包,这些变量将不会被内存回收器所回收,只有当内部的函数不可能被调用以后(例如被删除了,或者没有了指针),才会销毁这个闭包,而没有任何一个闭包引用的变量才会被下一次内存回收启动时所回收.
+
+
+// function f1(){
+//      var age = 30;
+
+//     return{
+    
+//     	getAge : function(){
+//     		return age;
+    		
+
+//     	},
+//     	setAge : function(newAge){
+    	
+//     		 age = newAge;
+//     	}
+//     }
+// };
+// var zyn = f1();
+// console.log(zyn.getAge());//30;
+// zyn.setAge(18);
+// console.log(zyn.getAge());//18;
+
+// var zyg = f1();
+// console.log(zyg.getAge());//30;
+// zyg.setAge(20);
+// console.log(zyg.getAge());//20;
+
+//由此代码可知，zyn和zyg都可以称为是f1这个类的实例，因为这两个实例对age这个成员的访问是独立的，互不影响的。
+
+
+
+
+
+// var a = 1;
+// var b = 2;
+// var c = 3;
+// setTimeout('console.log(a)',0);
+// //会被放在最后执行
+// console.log(b);
+// console.log(c);
+
+
+// var fnArr =[];
+// for (var i= 0;i<10;i++){
+// 	fnArr[i] = function(){
+// 		return i;
+// 	}
+// }
+// console.log(fnArr[3]());//10
+//实际上,只能获得该变量最后保留的值,也就是说最后变量最后为10.闭包中所记录的自由变量,只是对这个变量的一个引用,而非变量的值,当这个变量被改变了,闭包里获取到的变量值,也会被改变
+
+
+
+
+//方法一整个立即执行函数被赋值，且用临时变量保存i的值
+// var fnArr =[];
+// for (var i=0;i<10;i++)
+// {
+// 	fnArr[i]=(function(){
+// 		var n=i;
+// 		return function(){
+// 			return n
+// 		}
+// 	})();//立刻执行函数
+// }
+// console.log(fnArr[3]())//3
+// //方法二:立即执行函数内赋值，父函数传参
+
+// var fnArr =[];
+// for (var i=0;i<10;i++)
+// {
+// 	(function(n){
+// 		fnArr[i]=function(){
+// 			return n;
+// 		}
+// 	})(i)
+// }
+// console.log(fnArr[3]())//3
+// //方法三：立即执行函数内赋值，且用临时变量保存i的值
+// var fnArr =[];
+// for (var i=0;i<10;i++)
+// {
+// 	(function(){//这个立即执行函数相当于生成了10个闭包，每个闭包保存一个变量i
+// 		var n = i;//这里临时变量保存i的值
+// 		fnArr[i]=function(){
+// 			return n;
+// 		}
+// 	})()
+// }
+// console.log(fnArr[3]())//3
+
+// //方法四:整个立即执行函数被赋值，父函数需要传参
+// var fnArr =[];
+
+// for (var i=0;i<10;i++)
+//  {
+// 	fnArr[i]=(function(n){
+// 		return function(){
+// 			return n
+// 		}
+// 	})(i);
+	
+//  }
+// console.log(fnArr[3]())//3
+// //方法五:可以把i绑定在函数的属性上作为函数属性的一个值，得到函数就能得到值(这个很少用)
+
+// var fnArr = []
+// for (var i = 0; i < 10; i++) {
+//   var fn = function() {
+
+//   }
+//   fn.idx = i //函数身上可以绑定序号的，把这i直接绑在函数本身身上作为函数属性的值
+//   fnArr[i] = fn
+//   //i作为函数属性的一个值，得到这个函数就能得到这个值
+// //再将函数赋给数组，就可以通过数组获得这个值
+// }
+// console.log(fnArr[3].idx)//3
+
+
+
+// var Car = (function(){
+//     var speed = 0;
+//     function setSpeed(num){
+//         speed = num;
+//     }
+//     function getSpeed(){
+//         console.log(speed);
+//     }
+//     function accelerate(){
+//         speed +=10;
+//     }
+//     function decelerate(){
+//         speed -=10;
+//     }
+//     function getStatus(){
+//         if(speed>0){
+//             console.log('running');
+//         }else{
+//             console.log('stop')
+//         }
+//     }
+//     return {
+//         setSpeed:setSpeed,
+//         getSpeed:getSpeed,
+//         accelerate:accelerate,
+//         decelerate:decelerate,
+//         getStatus:getStatus
+//     }
+// }());
+// Car.setSpeed(30);
+// Car.getSpeed(); //30
+// Car.accelerate();
+// Car.getSpeed(); //40;
+// Car.decelerate();
+// Car.decelerate();
+// Car.getSpeed(); //20
+// Car.getStatus(); // 'running';
+// Car.decelerate(); 
+// Car.decelerate();
+// Car.getStatus();  //'stop';
+// //Car.speed;  //error
+
+
+// //方法1
+// var i=0;
+// function intv(){
+//   setTimeout(function(){
+//       console.log(i++);
+//       intv();  //注意在setTimeout函数内，对外层函数进行递归
+//   },1000)
+// };
+// //方法2：
+// var i = 0;
+// var b = setTimeout(function(){
+//     console.log(i++);
+//     setTimeout(arguments.callee,5000)//严格模式下会出错arguments.callee
+// },2000);
+
+
+
+function getMin() {
+    var i = 0;
+    var start = Date.now()  //获取当前时间
+    var clock = setTimeout(function() { 
+           i++;
+           if(i === 1000) {   //当i执行到1000时，延时器停止，然后获取结束时间。最小时间粒度就是最后的时间减去开始的时间除以执行的次数
+               clearTimeout(clock);
+               var end = Date.now();
+               console.log((end - start)/i)  //end-start是整个的执行时间，i就是调用了多少次
+          }
+
+          clock = setTimeout(arguments.callee,0); //arguments.callee就是这个匿名函数，如果i没到1000的话，就再立即执行一遍这函数，这个0也属于最小时间粒度
+
+    },0)
+}
+getMin()
+
+
+
+
+
+// var a = 1;  //变量提前，然后把a赋值为1
+
+// setTimeout(function(){ //因为是延迟函数且延迟0，所以在所有代码最后执行
+//     a = 2; 
+//     console.log(a); //最后才开始执行到这里，所以a为2
+// }, 0);
+
+// var a ;  //变量提升，上面a赋值为1，所以这里a也是1
+// console.log(a);  //所以a为1
+
+// a = 3;  //a赋值为3
+// console.log(a); //所以这里a为3
+
+
+
+// var flag = true;
+// setTimeout(function(){  //关键点延迟函数最后执行
+//     flag = false;
+// },0)
+// while(flag){}  //执行while循环，因为flag为ture，所以循环一直存在，执行空语句，后面的代码就没法执行
+// console.log(flag); //没有输出
+
+// for(var i=0;i<5;i++){
+//     setTimeout(function(){
+//          console.log('delayer:' + i ); 
+// //设置setTimeout，但是里面的函数是在最后执行，此时i已经为5。
+// //for每循环一次，setTimeout都要执行一次，只不过它是等到所有的代码执行完了再执行，在这里就是for循环的遍历。
+// //所以最后一共输出五个delayer: 5（分别是i等于0，1，2，3，4的输出）,但是每次输入值为5。
+//     }, 0);
+//     console.log(i); //执行console.log，输出结果为0，1，2，3，4
+// }
+
+//方法1：
+// for(var i=0;i<5;i++){
+//     (function(){
+//         var n = i; //因为i赋值给n，所以可以console.log(n)
+//         setTimeout(function(){
+//             console.log('delayer:' + n)
+//         },0)
+//         console.log(n);
+//     })();
+// }
+// //方法2：
+// for(var i=0;i<5;i++){
+//     (function(n){
+        
+//         setTimeout(function(){
+//             console.log('delayer:' + n)
+//         },0)
+//         console.log(n);
+//     })(i);
+// }
+// //方法3：
+// for(var i=0;i<5;i++){
+//         setTimeout((function(){
+//             var n = i;
+//             return function(){
+//                console.log('delayer:' + n) 
+//             };
+//         })(),0)
+//         console.log(i);
+// }
+// //方法4：
+// for(var i=0;i<5;i++){
+//         setTimeout((function(n){
+         
+//             return function(){
+//                console.log('delayer:' + n) 
+//             };
+//         })(i),0)
+//         console.log(i);
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<body>
+    
+</body>
+</html>

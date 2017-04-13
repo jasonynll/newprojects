@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script>
+window.onload =function(){
+	var oBtn = document.getElementById('btn');
+	var oUl  = document.getElementById('list');
+	var arr =['习近平邀请尼日利亚总统访华 这三年 国平',
+			  '习近平：把做人做事底线划出来 治国理政新实践',
+			  '李克强召开国务院会议 向核能大会致贺信 中国制造',
+			  '媒体：首支战略支援部队成立百天 都有哪些厉害将军',
+			  '教育部发布高等教育质量报告：规模世界第一']
+	
+	var onOff =true;
+/*	思路
+		1.按钮（用户体验不好）;
+		2.先清空，再生成；
+		3.判断；
+*/
+		
+	
+	oBtn.onclick = function(){
+		//oBtn.disabled = true;
+		//oBtn.style.display = 'none';
+		
+		//oUl.innerHTML ='';
+		if(onOff){
+			for(var i=0;i<arr.length;i++){
+			oUl.innerHTML +='<li>'+arr[i]+'</li>'
+			
+	};
+		onOff = false;
+	};
+	};
+};
+</script>
+</head>
+
+<body>
+<input id="btn" type="button" value="自动生成5条新闻"/>
+<ul id="list"></ul>
+</body>
+</html>

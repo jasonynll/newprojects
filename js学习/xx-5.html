@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+#div1{width:100px;height:100px;background:#06F;}
+</style>
+<script>
+      function setStyle(name, value){
+
+		var oDiv = document.getElementById('div1')
+		oDiv.style[name]=value
+	
+	
+}
+</script>
+</head>
+
+<body>
+<input id="btn1" type="button" value="变宽" onclick="setStyle('width', '400px')" />
+<input id="btn2"type="button" value="变高"  onclick="setStyle('height', '400px')"  />
+<input id="btn3"type="button" value="变红" onclick="setStyle('background', 'red')" />
+<div id="div1"></div>
+</body>
+</html>

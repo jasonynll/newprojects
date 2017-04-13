@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+window.onload =function()
+{
+	var oLi = document.getElementById('li2')
+	/*alert(oLi.previousSibling)*/
+	function getPrenode(node)
+	{
+		var prenode = node.previousSibling
+		if(prenode.nodeType!=1)
+		{
+			prenode = prenode.previousSibling
+		}
+		return prenode;
+	}
+	function getnexnode(node)
+	{
+		var nexnode = node.nextSibling
+		if(nexnode.nodeType!=1)
+		{
+			nexnode = nexnode.nextSibling
+		}
+		return nexnode;
+	}
+	alert(getPrenode(oLi).innerHTML)
+	alert(getnexnode(oLi).innerHTML)
+}
+</script>
+</head>
+
+<body>
+<ul>
+	<li>大洼</li>
+    <li id="li2">二娃</li>
+    <li>三娃</li>
+    <li>四娃</li>
+</ul>
+</body>
+</html>

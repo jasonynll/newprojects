@@ -1,0 +1,55 @@
+<script>
+
+	var arr =[2,4,6,8,10];
+	arr.push()//最后面添加一个
+	arr.pop()//最后面删除一个
+	arr.unshift//最前面添加一个
+	arr.shift//最前面删除一个
+	//arr.splice(参数1，参数2，参数3)
+	//参数2=0时从参数1的位置添加参数3,4,5.。。。
+	//参数2不为0时从参数1的位置删除参数2提供的个数
+	arr.join('')
+	//把数组链接成字符串，join('+,-,|,？,/')可换成任意表示
+    //arr.slice(start,end)//slice方法用于返回数组中一个片段或子数组，如果只写一个参数返回参数到数组结束部分，如果参数出现负数，则从数组尾部计数（-3意思是数组倒第三个，一般人不会这么干，但是在不知道数组长度，想舍弃后n个的时候有些用，不过数组长度很好知道。。。。，好纠结的用法），如果start大于end返回空数组，值得注意的一点是slice不会改变原数组，而是返回一个新的数组
+    //a.concat(b)//a,b为数组concat吧a，b链接起来形成新的数组。同样不会修改任何一个原始数组，也不会递归连接数组内部数组
+    //a.reverse()// 方法用于将数组逆序，与之前不同的是它会修改原数组
+    //a.sort()//sort方法用于对数组进行排序，当没有参数的时候会按字母表升序排序，如果含有undefined会被排到最后面，对象元素则会调用其toString方法，如果想按照自己定义方式排序，可以传一个排序方法进去，很典型的策略模式，同样sort会改变原数组。
+    var a=[12,34,56,8,2,9]
+    a.sort(function(a,b){
+    	return a-b //从小到大 b-a从大到小
+    })
+    console.log(a)
+    function sort(v1,v2)
+    {
+    	return v1-v2;
+    }
+    
+	function push(arr,val)
+	{
+		arr.splice(arr.length,0,val);
+		return arr.length;
+	}
+	function pop()
+	{
+        return arr.splice(arr.length-1,1)[0];
+	}
+	function unshift(arr,val)
+	{
+		arr.splice(0,0,val);
+		return arr.length;
+	}
+	function shift()
+	{
+		return  arr.splice(0,1)[0]
+	}
+
+	var scores =[100,90,80,70,60];
+	var html =[];
+	html.push('<div class="wrap">')
+	for(var i=0;i<scores.length;i++)
+	{
+		html.push('<div class="box">'+scores[i]+'</div>')
+	}
+	html.push('</div>')
+	console.log(html.join(''))
+</script>

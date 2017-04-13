@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script>
+
+	var el ={className:'header nav main footer'};
+
+function hasClass(el, cls) {
+    //左边是开头或者空格,右边是结尾或者空格
+    var reg = new RegExp('(\\s|^)' + cls + '(\s|$)', 'g');
+  // var reg = new RegExp('(\s|^)' + cls + '(\s|$)', 'g');
+    return reg.test(el.className);
+}
+
+function addClass(el,cls) {
+  if(hasClass(el,cls) === false){
+    el.className = el.className +' '+ cls;
+    return el.className;
+  }
+  else{
+    return 'error';
+  }
+}
+function removeClass(el,cls){
+  if(hasClass(el,cls) === true){
+    var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
+    el.className = el.className.replace(reg,'');
+    return el.className;
+  }
+  else{
+    return 'error';
+  }
+}
+console.log(hasClass(el,'article'));//false
+console.log(addClass(el,'article'));//"header nav main footer article"
+console.log(removeClass(el,'article'));//"header nav main footer"
+
+</script>
+<style></style>
+</head>
+<body>
+    <div id="text" class="header nav main footer"></div>
+</body>
+</html>

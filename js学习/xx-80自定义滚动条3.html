@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+#parent{width:600px; height:20px; background:#CCC; position:relative; margin:0 auto;}
+#div1{width:20px; height:20px; background:red; position:absolute;top:0px; left:0px;}
+#div2{width:300px; height:300px;position:relative; border:1px solid black; overflow:hidden;}
+#div3{ position:absolute; top:0; left:0;}
+</style>
+<script>
+window.onload= function()
+{
+	var oDiv1 = document.getElementById('div1')
+	var oDiv2 = document.getElementById('div2')
+	var oDiv3 = document.getElementById('div3')
+	var oparent = document.getElementById('parent')
+	
+	oDiv1.onmousedown = function(ev)
+	{
+		var oEvent=ev||event
+		var disx=oEvent.clientX-oDiv1.offsetLeft
+		
+		
+		document.onmousemove= function(ev)
+		{
+			var oEvent=ev||event
+			var l=oEvent.clientX-disx
+			
+			if(l<0)
+			{
+				l=0
+			}else if(l>oparent.offsetWidth-oDiv1.offsetWidth)
+			{
+				l=oparent.offsetWidth-oDiv1.offsetWidth
+			}
+			
+			
+			
+			oDiv1.style.left=l+'px'
+			var scale=l/(oparent.offsetWidth-oDiv1.offsetWidth)
+			document.title=scale
+			
+			oDiv3.style.top=-scale*(oDiv3.offsetHeight-oDiv2.offsetHeight)+'px'
+			
+			
+			
+		}
+		document.onmouseup=function()
+		{
+			document.onmousemove=null
+			document.onmouseup=null
+			
+		}
+		
+		return false
+		
+	}
+}
+</script>
+</head>
+
+<body>
+<div id="parent">
+	<div id="div1"></div>
+</div>
+<div id="div2">
+	<div id="div3">　 2016年7月3日，宁夏回族自治区银川市中级人民法院对马永平放火案进行公开宣判，认定被告人马永平犯放火罪，判处死刑，剥夺政治权利终身。
+
+　　 银川市人民检察院以被告人马永平犯放火罪，向银川市中级人民法院提起公诉。银川市中级人民法院受理后，依法向马永平送达了起诉书副本并告知其享有的诉讼权利，被告人马永平的辩护律师多次会见了被告人，查阅了全部卷宗材料。2016年6月15日，银川市中级人民法院公开开庭审理此案，银川市人民检察院派员出庭支持公诉。庭审中，公诉机关宣读了起诉书，出示了相关证据，马永平及其辩护人进行了质证，控辩双方充分发表了意见，马永平依法行使诉讼权利并在最后陈述中表示认罪悔罪。
+
+　　 法院经审理查明，被告人马永平因与他人水暖工程款纠纷，意图在公交车上或其他公共场所纵火泄愤，制造影响。2016年1月5日6时30分许，马永平手提装在不透明塑料袋中的两桶汽油，从宁夏贺兰县马家寨公交车站登上开往银川火车站的宁A22870号301路公交车，当车辆行驶至贺兰县金盛国际家居东侧路段时，马永平用打火机点燃汽油，车内瞬间燃起大火，致17人当场死亡，33人不同程度受伤，公交车完全烧毁。后1名乘客因特重度烧伤致多器官功能衰竭，经抢救无效死亡。
+
+ 
+     
+　　 放火后，马永平从公交车驾驶座左侧的车窗跳出逃走，当日下午16时20分许，被公安机关抓获归案。 
+
+　　 银川市中级人民法院认为，被告人马永平故意在公共交通工具上放火，致18人死亡、32人不同程度受伤，公交车被完全烧毁，严重危害公共安全，其行为已构成放火罪。公诉机关指控的罪名成立。马永平为实现个人经济利益，无视国家法律，置无辜群众生命健康和公私财产安全于不顾，事先预谋、精心准备，选择在人员密集的公交车上放火，证实其主观恶性及人身危险性极大。被告人马永平的犯罪行为致使大量无辜群众伤亡和公共财产损失，犯罪手段极其残忍，危害后果特别严重，社会影响极其恶劣，依法应予严惩。其归案后虽如实供述自己的犯罪行为，亦不足以对其从宽处罚。依照法律规定，遂作出上述判决。 
+
+　　 宣判后，被告人马永平当庭表示上诉。 
+
+　　 被告人的近亲属、部分人大代表、政协委员和新闻媒体等各界人士共六十余人参加了旁听。
+</div>
+</div>
+</body>
+</html>

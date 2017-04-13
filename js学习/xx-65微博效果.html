@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+#ul{padding:0px; margin:0px; border:1px solid black; width:400px; height:400px; margin:10px auto; overflow:hidden;}
+#ul li{list-style:none; padding:4px; border-bottom:1px dashed black;filter:alpha(opacity:0); opacity:0; overflow:hidden ; word-wrap:break-word;}
+</style>
+<script>
+function getStyle(obj,name)
+{
+	if(obj.currentStyle)
+	{
+		return obj.currentStyle[name]
+	}else
+	{
+		return getComputedStyle(obj,false)[name]
+	}
+}
+
+function Move(obj,json,fnEnd)
+{
+	clearInterval(obj.timer)
+	obj.timer=setInterval(function(){
+		var bStop=true
+		for(var attr in json)
+		{
+			var cur=0;
+			if(attr=='opacity')
+			{
+				cur=Math.round(parseFloat(getStyle(obj,attr))*100)
+			}else
+			{
+				cur= parseInt(getStyle(obj,attr))
+			}
+			var speed=(json[attr]-cur)/5
+			speed=speed>0?Math.ceil(speed):Math.floor(speed)
+			if(cur!=json[attr])
+			bStop=false
+			if(attr=='opacity')
+			{
+				obj.style.filter='alpha(opacity:'+(cur+speed)+')'
+				obj.style.opacity=(cur+speed)/100
+			}else
+			{
+				obj.style[attr]=cur+speed+'px'
+			}
+		}
+		if(bStop)
+		{
+			clearInterval(obj.timer)
+			if(fnEnd)fnEnd();
+		}
+	},30)
+
+}
+window.onload = function()
+{
+	var oBtn = document.getElementById('btn')
+	var oUl =  document.getElementById('ul')
+	var oTxt = document.getElementById('txt')
+	
+	
+	
+	oBtn.onclick = function()
+	{
+		var oLi = document.createElement('li')
+		oLi.innerHTML= oTxt.value;
+		oTxt.value=''
+		
+		if(oUl.children.length>0)
+		{
+			oUl.insertBefore(oLi,oUl.children[0])
+		}else
+		{
+			oUl.appendChild(oLi)
+		}
+		
+		var iHeight = oLi.offsetHeight
+		oLi.style.height='0'
+		alert(iHeight)
+		
+		Move(oLi,{height:iHeight},function(){
+				Move(oLi,{opacity:100})
+			
+		})
+		
+		
+		
+	} 
+}
+</script>
+</head>
+
+<body>
+<textarea id="txt" rows="4" cols="40"></textarea>
+<input id="btn" type="button" value="发布" />
+<ul id="ul">
+	<li>sdadsaddsad</li>
+</ul>
+</body>
+</html>

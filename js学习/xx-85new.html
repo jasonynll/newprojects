@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+function Person(name,phone)  //构造函数
+{     
+      //原料 加上new 系统会加上 var this=new Object()
+      //var obj=new Object();
+	  
+	  //加工
+	  this.name=name
+	  this.phone=phone  //添加属性
+	  
+	  this.showName= function()
+	  {
+		  alert('我的名字是：'+this.name)
+	  }
+	  this.showPhone=function()
+	  {
+		  alert('我的电话是：'+this.phone) //添加方法
+	  }
+	  
+	  //出厂 系统会加上  return   this
+	
+}
+
+var obj1= new Person('张亚楠','15211086658')
+var obj2= new Person ('姜琳','13426032027')
+
+obj1.showName()
+obj1.showPhone()
+</script>
+</head>
+
+<body>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    <script>
+    	var obj1 = {
+             hobbies:["chess","swiming","reading"]
+};
+     function deepCopy2(obj) {
+        var obj2=JSON.parse(JSON.stringify(obj));
+        return obj2;
+    }
+console.log(deepCopy2(obj1));
+var re =deepCopy2(obj1);
+//{hobbies:["chess","swiming","reading"]}
+console.log(obj1);//{hobbies:["chess","swiming","reading"]}
+obj1.hobbies.push('listening');
+
+var  obj1 =[1,2,3,4]
+	
+
+console.log(JSON.stringify(obj1))
+var re=JSON.parse(JSON.stringify(obj1))
+
+
+
+
+
+
+
+
+
+var obj1 = {
+    hobbies:["chess","swiming","reading"]
+};
+function deepcopy(obj,obj2){
+    var obj2 = obj2||{};//obj2 = {};
+    for(var key in obj){
+        if(typeof obj[key] === "object"){
+            obj2[key] = (obj[key].constructor === Array) ? [] : {};
+            deepcopy(obj[key],obj2[key]);
+        }else{
+            obj2[key] = obj[key]
+        };
+    }
+    return obj2;
+}
+var objj = deepcopy(obj1);
+console.log(objj);//{hobbies:["chess","swiming","reading","listening"]}
+objj.hobbies.push('listening');
+
+console.log(obj1);//{hobbies:["chess","swiming","reading"]}
+
+    </script>
+</body>
+</html>

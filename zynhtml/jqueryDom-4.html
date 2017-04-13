@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>回到顶部</title>
+    <style>
+         ul,li{
+            margin: 0px;
+            padding:0px;
+            list-style: none;
+        }
+        .ct>li{
+            border: 1px solid #ccc;
+            padding:10px;
+            margin:10px;
+        }
+        .text{
+            margin: 10px;
+            padding:10px;
+            background:yellow;
+
+        }
+        .go-top{
+            border:1px solid #ccc;
+            padding:10px;
+            background:#000;
+            color:#fff;
+            position:fixed;
+            right:10px;
+            bottom:10px;
+            cursor:pointer;
+            display: none;
+
+        }
+    </style>
+</head>
+<body>
+     <ul class="ct">
+        <li>今天</li>
+        <li>天气</li>
+        <li>不错</li>
+        <li>啊啊</li>
+    </ul>
+    <div class="text"></div>
+    <button class="btn">添加</button>
+    <div class="go-top">回到顶部</div>
+     <script src="jquery-3.2.0.min.js"></script>
+     <script>
+         
+    $('.ct').on('click.zyn','li',function(){
+        var str =$(this).text();
+        $('.text').text(str)
+
+    })
+    $('.btn').on('click',function(){
+        var  str = +new Date()
+        $('.ct').append('<li>'+str+'</li>')
+    })
+
+    $(window).on('scroll',function(){
+             var top = $(window).scrollTop();
+             if(top>100){
+                 $('.go-top').css('display','block')
+             }else{
+                  $('.go-top').css('display','none')
+             }
+    })
+
+    $('.go-top').on('click',function(){
+        $(window).scrollTop(0);
+    })
+     </script>
+</body>
+</html>   

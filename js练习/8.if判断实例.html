@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script>
+window.onload = function(){
+	var oText = document.getElementById('text');
+	var oBtn  = document.getElementById('btn');
+	
+	oBtn.onclick= function(){	
+		if(oText.value ==''){
+			alert('请输入');
+		}else if(oText.value == 'css'){
+			alert('恭喜你~成功~~~~');
+		}else if(oText.value == 'html'){
+			alert('恭喜你~成功~~~~');
+		}else if(oText.value == 'js'){
+			alert('恭喜你~成功~~~~');
+		}else{
+			alert(oText.value+'不对请重新输入');
+		}
+	};
+	
+};
+</script>
+</head>
+
+<body>
+<span>通关口令：</span>
+<input id="text" type="text" />
+<input id="btn" type="button" value="验证" />
+</body>
+</html>

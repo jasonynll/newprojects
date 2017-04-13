@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script>
+
+// str = "tankZHang (231144)"+   
+// "tank ying (155445)";   
+// res = str.match(/tank/);    //没有加/g   
+// console.log(res);                 //显示一个tank   
+  
+// res = str.match(/tank/g);   //加了/g   
+// console.log(res);                 //显示为tank,tank   
+ 
+// res = str.match(/zhang/);       
+// console.log(res);                  //显示为null   
+  
+// res = str.match(/zhang/i);   //加了/i   
+// console.log(res);                  //显示为ZHang   
+
+
+
+// var p = /$/mg;   
+// var s = '1\n2\n3\n4\n5\n6';   
+// console.log(p.test(s));  //显示为true   
+// console.log(RegExp.rightContext.replace(/\x0A/g, '\\a'));  //显示\a2\a3\a4\a5\a6   
+// console.log(RegExp.leftContext);    //显示为竖的2345   
+// console.log(RegExp.rightContext);   //显示为6
+
+// var p = /$/g;   
+// var s = '1\n2\n3\n4\n5\n6';   
+// console.log(p.test(s));  //显示为true   
+// console.log(RegExp.rightContext.replace(/\x0A/g, '\\a'));  //什么都不显示   
+// console.log(RegExp.leftContext);    //显示为竖的123456   
+// console.log(RegExp.rightContext);   //什么都不显示   
+  
+// var p = /^/mg;   
+// var s = '1\n2\n3\n4\n5\n6';   
+// console.log(p.test(s));    //显示为true   
+// console.log(RegExp.rightContext.replace(/\x0A/g, '\\a')); //显示为1\a2\a3\a4\a5\a6   
+// console.log(RegExp.leftContext);     //显示为竖的12345   
+// console.log(RegExp.rightContext);    //显示为6     
+
+//rightContext属性 返回匹配内容右侧的字符信息 ，只读静态属性 初始值为空字符串，如果有匹配则返回匹配内容右侧的信息 
+//leftContext属性 返回匹配内容左侧的字符信息 该属性的初始值为空字符串 ，如果有相应的匹配该属性的值就会改变 
+
+// var str = "abcdefacbsq";
+// var rep =/[abc]/g;
+// console.log(str.match(rep));//["a", "b", "c", "a", "c", "b"]
+
+// var rep1 =/[a-e]/g;
+// console.log(str.match(rep1));//["a", "b", "c", "d", "e", "a", "c", "b"]
+
+// var str = "abcdefacbsq";
+// var rep =/[^abc]/g;
+// console.log(str.match(rep));//["d", "e", "f", "s", "q"]
+
+// var rep1 =/[^a-e]/g;
+// console.log(str.match(rep1));//["f", "s", "q"]
+
+
+// var  str = "how  ! old are  you! I am !30! year"
+// var rep =/!.+?!/g
+// console.log(str.match(rep) );//["! old are  you!", "!30!"]
+
+
+
+
+// function trim(str){
+//     return str.replace(/(^\s+)|(\s+$)/g,"");    
+// }
+// console.log(trim('ab c'));//ab c
+// console.log(trim('ab c '));//ab c
+// console.log(trim(' ab c'));//ab c
+// console.log(trim(' abc '));//abc
+// console.log(trim('  abc   '));//abc
+// console.log(trim(' a b c '));//a b c
+
+
+
+
+
+// function isEmail(str){
+
+// 	var reg = /(\S)+[@]{1}(\S)+[.]{1}(\w)+/
+// 	return reg.test(str);
+// }//邮箱
+
+// function isPhone(str){
+
+// 	var reg = /^1[3-9]{10}$/;
+// 	return reg.test(str);
+
+// }//手机号
+
+
+// function isValidUsername(str){
+
+// 	var reg = /\w{6,20}$/
+// 	return reg.test(str)
+// }//判断用户输入的是不是合法的用户名（长度6-20个字符，只能包括字母、数字、下划线）
+
+
+
+
+//写一个函数isValidPassword(str),判断用户输入的是不是合法密码（长度6-20个字符，包括大写字母、小写字母、数字、下划线至少两种）
+
+
+
+
+// function isValidPassword(str){
+
+// 	if(str.length<6 || str.length>20){
+
+// 		return false;
+// 	}//长度条件
+
+// 	if(/[^\w]/g.test(str))
+// 	{
+// 		return false;
+// 	}//其他字符；
+
+// 	if(/(^[a-z]+$)|(^[A-Z]+$)|(^\d+$)|(^_+$)/g.test(str)){
+
+// 		 return fasle;
+// 	}//只有一种值得情况
+// 	return true;
+
+// }
+
+
+
+// var reg = /#[A-Fa-f0-9]+/g;
+// var subj = "color: #121212; background-color: #AA00ef; width: 12px; bad-colors: f#fddee #fd2 ";
+// console.log(subj.match(reg));//["#121212", "#AA00ef", "#fddee", "#fd2"]
+
+
+
+// var str = 'hello  "hunger" , hello "world"';
+// var pat =  /".*?"/g;
+// console.log(str.match(pat));//[""hunger"", ""world""]
+
+
+
+// str = '.. <!-- My -- comment \n test --> ..  <!----> .. '
+// re = /<!--[\w\W]*?-->/g;
+
+// console.log(str.match(re)); // '<!-- My -- comment \n test -->', '<!---->'
+// str = '.. <!-- My -- comment \n test --> ..  <!----> .. ';
+// re = /<[^\r]*?>/g;//非贪婪模式
+// console.log(str.match(re)); // '<!-- My -- comment \n test -->', '<!---->'
+
+
+
+// str = '.. <!-- My -- comment \n test --> ..  <!----> .. '
+// re = /<!--[^>]*-->/g;
+// console.log(str.match(re)); // '<!-- My -- comment \n test -->', '<!---->'
+// str = '.. <!-- My -- comment \n test --> ..  <!----> .. ';
+// re = /[^.]*>/g;//贪婪模式
+// console.log(str.match(re)); // '<!-- My -- comment \n test -->', '<!---->'
+
+
+
+
+// var re = /<[a-z].*?>/g
+// var str = '<> <a href="/"> <input type="radio" checked> <b>'
+// console.log(str.match(re))
+// //["<a href="/">", "<input type="radio" checked>", "<b>"]
+// //非贪婪模式
+
+
+// var re = /<[^>]+>/g;
+// var str = '<> <a href="/"> <input type="radio" checked> <b>';
+// console.log(str.match(re));
+//  // '<a href="/">', '<input type="radio" checked>', '<b>'
+// //贪婪模式
+
+
+
+
+
+var test = document.getElementById('test')
+function hasClass(el, cls) {
+    //左边是开头或者空格,右边是结尾或者空格
+    var reg = new RegExp('(\\s|^)' + cls + '(\s|$)', 'g');
+  // var reg = new RegExp('(\s|^)' + cls + '(\s|$)', 'g');
+    return reg.test(el.className);
+}
+
+
+function addClass(el, cls) {
+    var reg = new RegExp('(\\s|^)' + cls + '(\s|$)', 'g');
+
+    if (reg.test(el.className)) {
+        el.className = el.className + ' ' + cls;
+    }
+}
+
+function removeClass(el, cls) {
+    var reg = new RegExp('(\\s|^)' + cls + '(\s|$)', 'g');
+
+    //先替换成空格 再去掉多余的空格
+    if (!reg.test(el.className)) {
+        el.className = el.className.replace(reg, ' ').replace(/\s{2,}/g, ' ');
+    }
+}
+
+
+
+// \s其实就是\s也可以这没写：
+// RegExp(@"(^|\s)"+name+"(\s|$)") 
+// (^|\s)意思就是开头或是空符号
+// （\s|$）意思就是结尾或空符号，整个就是匹配所有以空号分割的字符串：
+// 比如+）+djskf dfsf   gggg  匹配：
+// +）+djskf
+// dfsf   
+// gggg  
+
+
+
+
+
+
+// var test = document.getElementById('test')
+
+// function hasClass(el,cls){
+//   var className = el.className;
+//   var reg = new RegExp('\\b'+cls+'\\b','g')
+//   return reg.test(className)
+// }
+// console.log(hasClass(test,'book'))//true
+// console.log(hasClass(test,'diff'))//false
+
+
+// function addClass(el,cls){
+//   var className = el.className;
+//   if(hasClass(el,cls)){
+//     console.log(cls+' is already existed')
+//   }else {
+//     className += ' '+cls;
+//     el.className = className;
+//     console.log(el.className)
+//   }
+// }
+// addClass(test,'book')//"book is already existed"
+// addClass(test,'happy')//"book read happy"
+
+
+// function removeClass(el,cls){
+//   var className = el.className;  
+//   if(!hasClass(el,cls)){
+//     console.log(cls+' is not existed')
+// }else{
+//   var reg = new RegExp('\\b'+cls+'\\b','g')
+//   el.className = className.replace(reg,'')
+//   console.log(el.className)
+// }
+// }
+// removeClass(test,'abc')//"abc is not existed"
+// removeClass(test,'book')//" read happy"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</head>
+<body>
+    <div class="text"></div>
+</body>
+</html>

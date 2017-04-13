@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+#div1{width:200px;height:200px;background:red}
+</style>
+<script>
+window.onload =function()
+{
+	var oDiv =document.getElementById('div1')
+	//alert(oDiv.currentStyle.width)//currentStyle只兼容ie
+	//ff Chrome getComputedStyle ie7,8 不支持
+	//alert(getComputedStyle(oDiv,null).width)
+	//alert(oDiv.currentStyle)
+	if(oDiv.currentStyle)
+	{
+		//ie
+		alert(oDiv.currentStyle.width)
+	}else{
+		//ff
+		alert(getComputedStyle(oDiv,null).width)
+	}
+}
+</script>
+</head>
+
+<body>
+<div id="div1"></div>
+</body>
+</html>
