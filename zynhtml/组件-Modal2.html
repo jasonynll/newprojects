@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .ct{
+                 display: none;
+        }
+        .cover{
+            width:100%;
+            height:100%;
+            position:absolute;
+            top:0;
+            left: 0;
+            opacity: 0.5;
+            background:#000;
+            
+        }
+        .dialog{
+            width:400px;
+            position:absolute;
+            left: 50%;
+            top:30%;
+            margin-left: -200px;
+            background:#eee;
+            border-radius: 5px;
+            padding-bottom:10px;
+            z-index: 2;
+           
+        }
+        .dialog-head{
+              background:#676666;
+             
+              color:white;
+              padding:10px 20px;
+              
+        }
+        .dialog-head>h3{
+           font-size:16px;        
+           margin: 0px;
+            
+        }
+        .dialog-head>span{
+            position:absolute;
+            top:10px;
+            right: 10px;
+            cursor:pointer;
+        }
+        .dialog-content{
+            
+            padding:10px;
+            margin: 15px;
+            color: #666;
+            font-size:11px;
+        }
+        .dialog-footer{
+            text-align:center;
+        }
+        .btn{
+            display: inline-block;
+            text-decoration: none;
+            border-radius: 3px;
+            background:#e33100;
+            width:50px;
+            color:#fff;
+            margin: 2px;
+            padding: 5px 0 6px;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <button class="open1">打开1</button>
+    <button class="open2">打开2</button>
+    <button class="open3">打开3</button>
+    <button class="open4">打开4</button>
+    <button class="open5">打开5</button>
+    <!--<div class="ct">
+        <div class="cover"></div>
+        <div class="dialog">
+            <div class="dialog-head">
+                <h3>World</h3>
+                <span class='btn-close'>X</span>
+            </div>
+            <div class="dialog-content">Welcome to the world of IT</div>
+            <div class="dialog-footer">
+                <a href="#" class="btn btn-close">取消</a>
+                <a href="#" class="btn btn-confirm">确定</a>
+            </div>
+        </div>
+    </div>-->
+    <script src = 'jquery-3.2.0.min.js'></script>
+    <script>
+            // 用模块定义的方式创建一个对象，把new Modal 的过程封装到模块里，这样用这就可以直接通过Dialog.open()的方法调用
+            var Dialog  =(function(){
+                function Modal(){
+                    this.createDialog();
+                    this.bind();
+                }
+
+                Modal.prototype = {
+                    defaults:{//设置初始参数
+                        title:'',
+                        message:'',
+                        ShowCloseBtn:true,
+                        ShowConfirmBtn:false,
+                        onClose:function(){},
+                        onConfirm:function(){}
+                    },
+                    open:function(opts){//当点击按钮时传入参数；
+                        this.setOpts(opts);//设置参数；
+                        console.log(this.opts);
+                        this.setDialog();//设置Dialog
+                        this.showDialog()//显示Dialog
+                    },
+                     createDialog:function(){//创建Dialog
+                        var tpl = '<div class="ct">'
+                                  +  '<div class="cover"></div>'
+                                  +  '<div class="dialog">'
+                                  +    '<div class="dialog-head"><h3></h3><span class="btn-close">X</span></div>' 
+                                  +    '<div class="dialog-content"></div>' 
+                                  +    '<div class="dialog-footer"><a href="#" class="btn btn-close">取消</a> <a href="#" class="btn btn-confirm">确定</a></div>' 
+                                  +  '</div>'
+                                  +'</div>' ;
+                         this.$ct  = $(tpl);  
+                         $('body').append(this.$ct);       
+                    },
+                     bind:function(){
+                        var _this = this;
+                        _this.$ct.find('.btn-close').on('click',function(e){//当点击.btn-close时
+                            e.preventDefault();//阻止默认事件；
+                            _this.opts.onClose()
+                            _this.hideDialog()
+                        });
+                         _this.$ct.find('.btn-confirm').on('click',function(e){
+                            e.preventDefault();
+                            _this.opts.onConfirm()
+                            _this.hideDialog()
+                        });
+                    },
+                   
+                    setOpts:function(opts){
+                        if(typeof opts === 'string'){//如果为字符串；参数值变为
+                            this.opts = $.extend({},this.defaults,{message:opts})//参数值变为一个新的对象
+                        }else if (typeof opts === 'object'){//如果为对象
+                            this.opts = $.extend({},this.defaults,opts);//参数值变为一个新的对象
+                        }
+                    },
+                   
+                    setDialog:function(){//设置Dialog的样式
+                        var $ct = this.$ct;
+                        if(!this.opts.title){
+                            $ct.find('.dialog-head').hide()
+                        }else{
+                             $ct.find('.dialog-head').show()
+                        }
+                        if(!this.opts.ShowCloseBtn){
+                            $ct.find('.dialog-footer .btn-close').hide();
+                        }else{
+                             $ct.find('.dialog-footer .btn-close').show();
+                        }
+                        if(!this.opts.ShowConfirmBtn){
+                            $ct.find('.dialog-footer .btn-confirm').hide();
+                        }else{
+                            $ct.find('.dialog-footer .btn-confirm').show();
+                        }
+                        $ct.find('.dialog-head h3').text(this.opts.title);
+                        $ct.find('.dialog-content').html(this.opts.message);
+
+                    },
+                    showDialog:function(){
+                        this.$ct.show()//Dialog显示
+                    },
+                    hideDialog:function(){
+                        this.$ct.hide()//Dialog隐藏
+                    }
+                };
+                return  new Modal();
+            })()
+            $('.open1').on('click',function(){
+                Dialog.open('Welcome to the world of IT');
+            })
+
+            $('.open2').on('click',function(){
+                Dialog.open('<a href="#">'+'百度'+'</a>');
+            })
+
+            $('.open3').on('click',function(){
+                Dialog.open({
+                    title:'World',
+                    message:'Welcome to the world of IT',
+                    ShowCloseBtn:true,
+                    ShowConfirmBtn:true,
+                    onClose:function(){
+                        alert('close')
+                    },
+                    onConfirm:function(){
+                        alert('确定')
+                    }
+                });
+            })
+
+          
+            $('.open4').on('click',function(){
+                var tpl = '<ul><li>'+'列表1'+'</li><li>'+'列表2'+'</li><li>'+'列表3'+'</li></ul>' 
+                Dialog.open({
+                    title:'World',
+                    message:tpl,
+                    ShowCloseBtn:true,
+                    ShowConfirmBtn:true,
+                    onClose:function(){
+                        alert('close')
+                    },
+                    onConfirm:function(){
+                        alert('确定')
+                    }
+                });
+            })
+
+              $('.open5').on('click',function(){   
+                Dialog.open({
+                    title:'World',
+                    message:'Welcome to the world of IT',
+                    ShowCloseBtn:false,
+                    ShowConfirmBtn:false,
+                    onClose:function(){
+                        alert('close')
+                    }
+                
+                });
+            })
+
+   
+    </script>
+</body>
+</html>

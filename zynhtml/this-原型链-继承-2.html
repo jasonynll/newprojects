@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function Person(name){
+            this.name = name;
+        }
+        Person.prototype.sayName = function(){
+            console.log('My name is :' + this.name);
+        }
+        var p = new Person("jasonynll")
+        p.sayName()
+         
+
+// Person是构造函数，也是一个对象，这个对象里面存在一个prototype属性，而构造函数内部定义了实例的属性和方法，这些属性和方法是属于该类的所有实例的特征；
+// p是通过构造函数Person构造出来的实例，也是拥有__proto__属性。所以p.__proto__ === Person.prototype;
+// prototype是构造函数内部的原型对象，所以拥有contructor和__proto__属性，其中contructor属性指向构造函数Person，__proto__指向该对象的原型，即
+    // Person.prototype.__proto__ === Object.prototype;
+    // Person.prototype.constructor == Person
+
+
+
+
+
+    //方法一：
+// String.prototype.getMostOften = function (){
+//     var obj ={} //存放每个i出现的次数
+//     var k;
+//     for(var i =0 ; i<this.length;i++){
+//         k = this[i];
+//         if(obj[k]){//如果存在，对应的值+1；
+//             obj[k] ++
+//         }else{
+//             obj[k] = 1//如果obj[k]不存在 给他赋值 =1 ；
+//         }
+//     }
+
+//     var max = 0;
+//     var key ;
+//     for(var j in obj ){ //循环obj
+//         if(obj[j]>max){
+//             max = obj[j]//如果obj[j]的值大于max 就赋值给max 最后max获取obj[j]里最大的的值；
+//             key = j 
+//         }
+//     }
+//     return key;
+// }
+// var str = 'ahbbccdeddddfg';
+// var ch = str.getMostOften();
+// console.log(ch); //d
+
+
+
+// //方法二：和第一种思想一样
+String.prototype.getMostOften = function(){
+    var obj = this.split("");//把字符串变成数组；
+    var result = obj.reduce(function(obj,value){
+        if(obj[value]){
+            obj[value]++
+        }else{
+            obj[value] = 1
+        }
+
+        return obj;            
+    },{});//reduce()ES5方法；数组求和 传入空对象obj
+    //arr.reduce(function (preValue,curValue,index,array) { return preValue + curValue; }, 5);
+    //preValue: 上一次调用回调返回的值，或者是提供的初始值（initialValue）
+    // curValue: 数组中当前被处理的数组项
+    // index: 当前数组项在数组中的索引值
+    // array: 调用 reduce()方法的数组
+    
+
+  var max = 0,k;
+        for(var key in result){
+            if (result[key]>max){
+                max = result[key];
+                k = key
+            }
+        }
+    return k;
+}
+var str = 'ahbbccdeddddfg';
+var ch = str.getMostOften();
+console.log(ch); //d
+
+
+
+ function isInstanceOf(obj, fn){
+    var objpro = obj.__proto__;
+    do{
+        if(objpro === fn.prototype){
+            return true;
+        }
+        else {
+            objpro = objpro.__proto__;
+        }
+    }while(objpro)
+    return false;
+}
+
+
+
+
+function Person(name, age){
+this.name = name;
+this.age = age;
+}
+Person.prototype.sayName = function(){
+console.log(this.name);
+}
+function Male(name, age, sex){
+Person.call(this, name, age);
+this.sex = sex;
+}
+// Male.prototype = new Person(); //该方法同下，代替不兼容Object.create()的使用场景
+Male.prototype = Object.create(Person.prototype);
+Male.prototype.constructor = Male;
+Male.prototype.sayAge = function(){
+  console.log(this.age);
+};
+var p1 = new Male('hunger', 20, 'nan');
+p1.sayName();//hunger
+p1.sayAge();//20
+
+
+
+
+function People(){
+  this.name='zyn'
+}
+People.prototype.sayName=function(){console.log(this.name)}
+
+var p = new People()
+p.hasOwnProperty('name')//true
+p.hasOwnProperty('sayName')//false
+
+
+
+
+function Person(name, sex){
+    this.name = name;
+    this.sex = sex;
+}
+function Male(name, sex, age){
+    Person.call(this, name, sex);    //这里的 call 有什么作用
+    this.age = age;
+}
+
+
+
+
+
+
+
+
+function Person(name, sex){
+    this.name = name;
+    this.sex = sex;
+}
+
+Person.prototype.getName = function(){
+     console.log('name:'+ this.name)
+};    
+
+function Male(name, sex, age){
+   Person.call(this,name,'sex')
+   this.age = age;
+}
+
+Male.prototype=Object.create(Person.prototype)
+Male.prototype.constructor = Male;
+Male.prototype.getAge = function(){
+    console.log('age:'+ this.age)
+};
+
+var p= new Male('zyn', '男', 27);
+p.getName();
+
+    </script>
+</body>
+</html>

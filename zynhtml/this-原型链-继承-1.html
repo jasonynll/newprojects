@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+//作为函数调用
+        console.log(this);//this指向window
+
+        function fn1(){
+            console.log(this);//this指向window
+
+        }
+        fn1();
+
+
+
+
+
+//内部函数
+        function fn0(){
+            function fn(){
+                console.log(this);//this指向window
+            }
+            fn();
+        }
+
+        fn0();
+
+//setTimeout、setInterval;这两个方法执行的函数this也是全局对象
+
+
+//DOM对象绑定事件;在事件处理程序中this代表事件源DOM对象（低版本IE有bug，指向了window)
+ document.addEventListener('click', function(e){
+    console.log(this);//this 指向doucment
+    setTimeout(function(){
+        console.log(this);//this 指向window
+    }, 200);
+}, false);
+
+
+//以下代码输出什么?
+var john = { 
+  firstName: "John" 
+}
+function func() { 
+  alert(this.firstName + ": hi!")
+}
+john.sayHi = func
+john.sayHi()//弹出John:h1! ; 谁调用了函数this就指向谁；john对象调用了函数this指向john对象
+
+
+
+func() //全局调用函数 = Window.func() 相当于window调用了函数，所以this指向window
+function func() { 
+console.log(this)
+}
+
+
+
+document.addEventListener('click', function(e){
+    console.log(this);// DOM对象绑定事件;在事件处理程序中this代表事件源DOM对象（低版本IE有bug，指向了window)
+    setTimeout(function(){
+        console.log(this);//setTimeout、setInterval;这两个方法执行的函数this也是全局对象
+    }, 200);
+}, false);
+
+document.addEventListener('click', function(e){
+    console.log(this);
+    setTimeout(function(){
+        console.log(this);
+    }.bind(this), 200);//this指向document;改变了setTimeout里this的指向
+      
+}, false);
+
+
+var firstName = 'zyn';
+var john = { 
+  firstName: "jasonynll" 
+}
+
+function func() { 
+  alert( this.firstName )
+}
+func.call(john)//call(john)改变了this的指向，指向了john对象里的this；所以弹出jasonynll
+//func();如果是这样this指向全局；所以弹出zyn
+
+
+    var module= {
+    bind: function(){
+        $btn.on('click', function(){
+        console.log(this) //this指向的是$btn
+        this.showMsg();//当点击时执行this.showMsg()时$btn没有.showMsg的方法会报错
+                       //应该让this指向module这样当点击按钮是才会打印jasonynll
+        })
+    },
+    
+    showMsg: function(){
+        console.log('jasonynll');
+        }
+    }
+
+    //改为
+    var module= {
+    bind: function(){
+         var _this = this //保存module的this
+        $btn.on('click', function(){
+        console.log(this) 
+        _this.showMsg(); //这时的this指向module，才会调用showMsg方法
+                      
+        })
+    },
+    
+    showMsg: function(){
+        console.log('jasonynll');
+        }
+    }
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .ct{
+                 display: none;
+        }
+        .cover{
+            width:100%;
+            height:100%;
+            position:absolute;
+            top:0;
+            left: 0;
+            opacity: 0.5;
+            background:#000;
+            
+        }
+        .dialog{
+            width:400px;
+            position:absolute;
+            left: 50%;
+            top:30%;
+            margin-left: -200px;
+            background:#eee;
+            border-radius: 5px;
+            padding-bottom:10px;
+            z-index: 2;
+           
+        }
+        .dialog-head{
+              background:#676666;
+             
+              color:white;
+              padding:10px 20px;
+              
+        }
+        .dialog-head>h3{
+           font-size:16px;        
+           margin: 0px;
+            
+        }
+        .dialog-head>span{
+            position:absolute;
+            top:10px;
+            right: 10px;
+            cursor:pointer;
+        }
+        .dialog-content{
+            
+            padding:10px;
+            margin: 15px;
+            color: #666;
+            font-size:11px;
+        }
+        .dialog-footer{
+            text-align:center;
+        }
+        .btn{
+            display: inline-block;
+            text-decoration: none;
+            border-radius: 3px;
+            background:#e33100;
+            width:50px;
+            color:#fff;
+            margin: 2px;
+            padding: 5px 0 6px;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <button class="open1">打开1</button>
+    <button class="open2">打开2</button>
+    <button class="open3">打开3</button>
+    <button class="open4">打开4</button>
+    <button class="open5">打开5</button>
+    <div class="ct">
+        <div class="cover"></div>
+        <div class="dialog">
+            <div class="dialog-head">
+                <h3>World</h3>
+                <span>X</span>
+            </div>
+            <div class="dialog-content">Welcome to the world of IT</div>
+            <div class="dialog-footer">
+                <a href="#" class="btn btn-close">取消</a>
+                <a href="#" class="btn btn-confirm">确定</a>
+            </div>
+        </div>
+    </div>
+    <script src = 'jquery-3.2.0.min.js'></script>
+    <script>
+        var $open1 =$('.open1');
+        var $open2 =$('.open2');
+        var $open3 =$('.open3');
+        var $open4 =$('.open4');
+        var $open5 =$('.open5');
+        var $Ct = $('.ct')
+        var $Dhead = $('.dialog-head');
+        var $btnConfirm = $('.btn-confirm')
+        var $btnClose = $('.btn-close')
+        var $Dcontent = $('.dialog-content')
+        var $Span = $('span')
+        var $Dfooter = $('.dialog-footer')
+
+        $open1[0].addEventListener('click',function(){
+              
+              $Ct[0].style.display = 'block';
+              $Dhead[0].style.display ='none';
+              $btnConfirm[0].style.display = 'none'
+              $btnClose[0].style.display = 'inline-block'
+              Close1()
+          
+        })
+       
+
+
+         $open2[0].addEventListener('click',function(){
+              
+              $Ct[0].style.display = 'block';
+              $Dhead[0].style.display ='none';
+               $btnConfirm[0].style.display = 'none'
+               $btnClose[0].style.display = 'inline-block'
+              $Dcontent[0].innerHTML ='<a href="#">'+'百度'+'</a>'
+               Close1()
+          
+              
+        })
+
+
+        $open3[0].addEventListener('click',function(){
+              
+              $Ct[0].style.display = 'block'; 
+            $Dhead[0].style.display ='block';
+            $Dcontent[0].innerText = 'Welcome to the world of IT'
+             $Dfooter[0].style.display = 'block'   
+              $btnConfirm[0].style.display = 'inline-block'
+              $btnClose[0].style.display = 'inline-block'
+            Close2()
+          
+          
+            
+        })
+     
+
+       $open4[0].addEventListener('click',function(){
+              
+                $Ct[0].style.display = 'block';
+                $Dfooter[0].style.display = 'block'
+                $btnConfirm[0].style.display = 'inline-block'
+                $btnClose[0].style.display = 'inline-block'
+              $Dcontent[0].innerHTML='<ul><li>'+'列表1'+'</li><li>'+'列表2'+'</li><li>'+'列表3'+'</li></ul>'           
+              Close2()
+        })  
+
+
+         $open5[0].addEventListener('click',function(){
+               $Dhead[0].style.display ='block';
+              $Ct[0].style.display = 'block';  
+              $Dfooter[0].style.display = 'none'  
+              $Dcontent[0].innerText = 'Welcome to the world of IT'
+              Close2();
+          
+            
+        })   
+
+        function Close1(){
+                  $btnClose[0].addEventListener('click',function(){
+                  $Ct[0].style.display = 'none';
+           })
+        }
+        function Close2(){
+              
+                  $Span[0].addEventListener('click',function(){
+                  alert('close')
+                  $Ct[0].style.display = 'none';
+            })
+       $btnClose[0].addEventListener('click',function(){
+                  alert('close')
+                  $Ct[0].style.display = 'none';
+            })
+       $btnConfirm[0].addEventListener('click',function(){
+                  alert('confirm')
+                  $Ct[0].style.display = 'none';
+            })   
+        }      
+    </script>
+</body>
+</html>
